@@ -75,6 +75,22 @@ function brownSugarOatAmericano() {
 
 }
 
+function latte() {
+
+    let drink = new Drink();
+    drink.name = 'Latte';
+    drink.milk.set('2%');
+    drink.shots.set(2);
+    return drink;
+
+}
+
+function cappuccino() {
+    let drink = latte();
+    drink.name = 'Cappuccino';
+    return drink;
+}
+
 drinks.tradMisto = tradMisto;
 drinks.blondeRoast = blondeRoast;
 drinks.pikeRoast = pikeRoast;
@@ -84,3 +100,4 @@ drinks.americano = americano;
 drinks.irishCreamAmericano = irishCreamAmericano;
 drinks.brownSugarOatAmericano = brownSugarOatAmericano;
 drinks.americanoMisto = americanoMisto;
+drinks.cappuccino = cappuccino;
