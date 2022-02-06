@@ -24,6 +24,8 @@ class Drink {
     this.vanillabean = new Sweetener('Vanilla Bean Powder');
     this.strawberrypuree = new RangeCustomization('Strawberry Puree', 0);
     this.refresher = { mango: new RangeCustomization("Mango Dragonfruit", 0), strawberry: new RangeCustomization("Strawberry Acai", 0), kiwi: new RangeCustomization("Kiwi Starfruit", 0) };
+    this.inclusions = { mango: new Sweetener("Dragonfruit Inclusions", 0), strawberry: new Sweetener("Strawberry Inclusions", 0), kiwi: new Sweetener("Kiwi Inclusions", 0) };
+    this.frapchips = new Sweetener('Frap Chips', 0);
     this.name = 'Latte'
 
   }
@@ -36,7 +38,7 @@ class Drink {
         out = out + '<br>' + vals[i].toString();
       }
     }
-    const vals2 = [this.syrups, this.sweeteners, this.toppping, this.juice, this.tea, this.refresher];
+    const vals2 = [this.syrups, this.sweeteners, this.toppping, this.juice, this.tea, this.refresher, this.inclusions];
     for (let i = 0; i < vals2.length; i++) {
       for (let key in vals2[i]) {
 
@@ -49,7 +51,7 @@ class Drink {
     if (this.cup.value != this.size.value) {
       out = out + '<br>In a ' + this.cup.toString() + ' cup';
     }
-    if (this.espresso.ristretto) {
+    if (this.espresso.ristretto && !this.espresso.defaultR) {
 
       out = out + '<br>Ristretto';
 

@@ -67,6 +67,18 @@ class Size extends Customization {
 
     }
 
+    toString() {
+
+        if (this.value < 0) {
+
+            return '';
+
+        } else {
+            return super.toString();
+        }
+
+    }
+
     canBeCold() {
 
         return this.size > 0;
@@ -96,6 +108,7 @@ class Espresso extends Customization {
         this.default = 1;
         this.str = ['Decaf', 'Signature', 'Blonde'];
         this.ristretto = false;
+        this.defaultR = false;
 
     }
 
@@ -108,6 +121,13 @@ class Espresso extends Customization {
     isRistretto() {
 
         return this.ristretto;
+
+    }
+
+    setDefault() {
+
+        super.setDefault();
+        this.defaultR = this.ristretto;
 
     }
 
@@ -206,7 +226,7 @@ class Syrup extends Customization {
 
 function generateSyrups() {
 
-    const syrups = ['Vanilla', 'Sf Vanilla', 'Caramel', 'Peppermint', 'Honey Blend', 'Raspberry', 'Chestnut Praline', 'Toffee Nut', 'Hazelnut', 'Mocha', 'White Mocha', 'Chai', 'Creme Brulee', 'Pistachio', "Dark Caramel", "Classic", "Liquid Cane Sugar", 'Cinnamon Dolce', "Irish Cream", 'Sugar Cookie', "Brown Sugar"];
+    const syrups = ['Vanilla', 'Sf Vanilla', 'Caramel', 'Peppermint', 'Honey Blend', 'Raspberry', 'Chestnut Praline', 'Toffee Nut', 'Hazelnut', 'Mocha', 'White Mocha', 'Chai', 'Caramel Brule', 'Pistachio', "Dark Caramel", "Classic", "Liquid Cane Sugar", 'Cinnamon Dolce', "Irish Cream", 'Sugar Cookie', "Brown Sugar"];
 
     const dic = {};
 
@@ -258,8 +278,10 @@ class Milk extends Customization {
     }
 
     set(val) {
-
-        super.set(val.substring(0, val.length-5));
+        if (typeof(val) == 'string') {
+            val = val + " Milk";
+        }
+        super.set(val);
 
     }
 
@@ -297,52 +319,15 @@ function generateSweeteners() {
 
 }
 
-class Topping {
-
-    constructor(name) {
-
-        this.value = false;
-        this.name = name;
-        this.default = false;
-
-    }
-
-    toString() {
-
-        if (this.value) {
-            return this.name;
-        }
-        return '';
-
-    }
-
-    set(bool) {
-        this.value = bool;
-    }
-
-    isDefault() {
-
-        return this.value == this.default;
-
-    }
-
-    setDefault() {
-
-        this.default = this.value;
-
-    }
-
-}
-
 function generateToppings() {
 
-    const toppings = ['Cocoa Powder', 'Chestnut Praline', 'Chocolate Curls', 'Chinnamon Dolce', 'Red and Green Sprinkles', 'Salted Brown Butter', 'Caramel Brulee', 'Cinnamon', 'Caramel Crunch', 'Cookie Crummbles'];
+    const toppings = ['Cocoa Powder', 'Chestnut Praline', 'Chocolate Curls', 'Cinnamon Dolce', 'Red and Green Sprinkles', 'Salted Brown Butter', 'Caramel Brule', 'Cinnamon', 'Caramel Crunch', 'Cookie Crummbles'];
 
     const dic = {};
 
     for (let i = 0; i < toppings.length; i++) {
 
-        dic[toppings[i]] = new Topping(toppings[i]);
+        dic[toppings[i]] = new RangeCustomization(toppings[i], 0);
 
     }
 
