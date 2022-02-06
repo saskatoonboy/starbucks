@@ -255,7 +255,7 @@ function doubleChocolatyChipCreamFrappuccino() {
 
     let drink = javaChipFrappuccino();
     drink.name = 'Double Chocolaty Cream Frappuccino'
-    return drink.name;
+    return drink;
 
 }
 
