@@ -1,151 +1,181 @@
 
-function kiwiStarfruitRefresher() {
+const rName = {kiwi: 'Kiwi Starfruit', strawberry: 'Strawberry Acai', mango: 'Mango Dragonfruit'};
+const mName = {lemonade: 'Lemonde', water: 'Refresher'};
+const cName = {kiwi: 'Star Drink', strawberry: 'Strawberry Coconut Drink', mango: 'Dragon Drink'};
 
-    let drink = new Drink();
-    drink.name = 'Kiwi Starfruit Refresher';
-    drink.temp.set(0);
-    drink.foam.set(0);
-    drink.water.set(2);
-    drink.ice.set(2);
-    drink.refresher.kiwi.set(2);
-    drink.inclusions.kiwi.set(2);
-    return drink;
+class Refresher extends Drink {
 
-}
+    constructor(juice, mixin) {
 
-function kiwiStarfruitLemonade() {
+        super();
+        if (mixin == 'coconut') {
+            this.name = cName[juice];
+            this.milk.set('Coconut');
+        } else if (mixin == 'water') {
+            this.name = rName[juice] + ' ' + mName[mixin];
+            this.water.set(2);
+        } else {
+            this.name = rName[juice] + ' ' + mName[mixin];
+            this.juice.lemonade.set(2);
+        }
+        this.iced();
+        this.refresher[juice].set(2);
+        this.inclusions[juice].set(this.getInclusionsCount());
+    }
 
-    let drink = new kiwiStarfruitRefresher();
-    drink.name = 'Kiwi Starfruit Lemonade';
-    drink.water.set(0);
-    drink.juice.lemonade.set(2);
-    return drink;
+    canBeTrenta() {
+        
+        return true;
 
-}
-
-function starDrink() {
-
-    let drink = new kiwiStarfruitRefresher();
-    drink.name = 'Star Drink';
-    drink.water.set(0);
-    drink.milk.set('Coconut');
-    return drink;
+    }
 
 }
 
-function mangoDragonfruitRefresher() {
+class KiwiStarfruitRefresher extends Refresher{
 
-    let drink = new kiwiStarfruitRefresher();
-    drink.name = 'Mango Dragonfruit Refresher';
-    drink.refresher.kiwi.set(0);
-    drink.inclusions.kiwi.set(0);
-    drink.refresher.mango.set(2);
-    drink.inclusions.mango.set(2);
-    return drink;
+    constructor() {
+
+        super('kiwi', 'water');
+
+    }
 
 }
 
-function mangoDragonfruitLemonade() {
+class KiwiStarfruitLemonade extends Refresher{
 
-    let drink = new kiwiStarfruitLemonade();
-    drink.name = 'Mango Dragonfruit Lemonade';
-    drink.refresher.kiwi.set(0);
-    drink.inclusions.kiwi.set(0);
-    drink.refresher.mango.set(2);
-    drink.inclusions.mango.set(2);
-    return drink;
+    constructor() {
+
+        super('kiwi', 'lemonade');
+
+    }
 
 }
 
-function dragonDrink() {
+class StarDrink extends Refresher{
 
-    let drink = new starDrink();
-    drink.name = 'Dragon Drink';
-    drink.refresher.kiwi.set(0);
-    drink.inclusions.kiwi.set(0);
-    drink.refresher.mango.set(2);
-    drink.inclusions.mango.set(2);
-    return drink;
+    constructor() {
+
+        super('kiwi', 'coconut');
+
+    }
 
 }
 
-function strawberryAcaiRefresher() {
+class MangoDragonfruitRefresher extends Refresher{
 
-    let drink = new kiwiStarfruitRefresher();
-    drink.name = 'Strawberry Acai Refresher';
-    drink.refresher.kiwi.set(0);
-    drink.inclusions.kiwi.set(0);
-    drink.refresher.strawberry.set(2);
-    drink.inclusions.strawberry.set(2);
-    return drink;
+    constructor() {
+
+        super('mango', 'water');
+
+    }
 
 }
 
-function strawberryAcaiLemonade() {
+class MangoDragonfruitLemonade extends Refresher{
 
-    let drink = new kiwiStarfruitLemonade();
-    drink.name = 'Strawberry Acai Lemonade';
-    drink.refresher.kiwi.set(0);
-    drink.inclusions.kiwi.set(0);
-    drink.refresher.strawberry.set(2);
-    drink.inclusions.strawberry.set(2);
-    return drink;
+    constructor() {
+
+        super('mango', 'lemonade');
+
+    }
 
 }
 
-function strawberryCoconutDrink() {
+class DragonDrink extends Refresher{
 
-    let drink = new starDrink();
-    drink.name = 'Strawberry Coconut Drink';
-    drink.refresher.kiwi.set(0);
-    drink.inclusions.kiwi.set(0);
-    drink.refresher.strawberry.set(2);
-    drink.inclusions.strawberry.set(2);
-    return drink;
+    constructor() {
+
+        super('mango', 'coconut');
+
+    }
 
 }
 
-function coldMilk() {
+class StrawberryAcaiRefresher extends Refresher{
 
-    let drink = new Drink();
-    drink.name = 'Cold Milk';
-    drink.milk.set('2%');
-    drink.temp.set(0);
-    drink.foam.set(0);
-    return drink;
+    constructor() {
 
-}
+        super('strawberry', 'water');
 
-function lemonade() {
-
-    let drink = new Drink();
-    drink.name = 'Lemonade';
-    drink.juice.lemonade.set(2);
-    drink.temp.set(0);
-    drink.foam.set(0);
-    drink.ice.set(2);
-    return drink;
+    }
 
 }
 
-function blendedStrawberryLemonade() {
+class StrawberryAcaiLemonade extends Refresher{
 
-    let drink = new Drink();
-    drink.strawberrypuree.set(2);
-    drink.syrups['Classic'].set(2);
-    return drink;
+    constructor() {
+
+        super('strawberry', 'lemonade');
+
+    }
 
 }
 
-drinks.kiwiStarfruitRefresher = kiwiStarfruitRefresher;
-drinks.kiwiStarfruitLemonade = kiwiStarfruitLemonade;
-drinks.starDrink = starDrink;
-drinks.mangoDragonfruitRefresher = mangoDragonfruitRefresher;
-drinks.mangoDragonfruitLemonade = mangoDragonfruitLemonade;
-drinks.dragonDrink = dragonDrink;
-drinks.strawberryAcaiRefresher = strawberryAcaiRefresher;
-drinks.strawberryAcaiLemonade = strawberryAcaiLemonade;
-drinks.strawberryCoconutDrink = strawberryCoconutDrink;
-drinks.coldMilk = coldMilk;
-drinks.lemonade = lemonade;
-drinks.blendedStrawberryLemonade = blendedStrawberryLemonade;
+class StrawberryCoconutDrink extends Refresher{
+
+    constructor() {
+
+        super('strawberry', 'coconut');
+
+    }
+
+}
+
+class ColdMilk extends Drink {
+
+    constructor() {
+
+        super();
+        this.name = 'Cold Milk';
+        this.milk.set('2%');
+        this.iced();
+        this.ice.set(0);
+
+    }
+
+}
+
+class Lemonade extends Drink{
+
+    constructor() {
+
+        super();
+        this.name = 'Lemonade';
+        this.juice.lemonade.set(2);
+        this.iced();
+
+    }
+
+    canBeTrenta() {
+        
+        return true;
+
+    }
+    
+}
+
+class BlendedStrawberryLemonade extends Drink {
+
+    constructor() {
+
+        super();
+        this.name = 'Blended Strawberry Lemonade';
+        this.strawberrypuree.set(2);
+        this.iced();
+
+    }
+
+}
+
+drinks.KiwiStarfruitRefresher = KiwiStarfruitRefresher;
+drinks.KiwiStarfruitLemonade = KiwiStarfruitLemonade;
+drinks.StarDrink = StarDrink;
+drinks.MangoDragonfruitRefresher = MangoDragonfruitRefresher;
+drinks.MangoDragonfruitLemonade = MangoDragonfruitLemonade;
+drinks.DragonDrink = DragonDrink;
+drinks.StrawberryAcaiRefresher = StrawberryAcaiRefresher;
+drinks.StrawberryAcaiLemonade = StrawberryAcaiLemonade;
+drinks.StrawberryCoconutDrink = StrawberryCoconutDrink;
+drinks.ColdMilk = ColdMilk;
+drinks.Lemonade = Lemonade;
+drinks.BlendedStrawberryLemonade = BlendedStrawberryLemonade;

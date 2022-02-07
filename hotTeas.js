@@ -1,132 +1,179 @@
 
-function chaiTeaLatte() {
+class TeaLatte extends Drink {
 
-    let drink = new Drink();
-    drink.name = 'Chai Tea Latte';
-    drink.syrups['Chai'].set(4);
-    drink.water.set(2);
-    drink.milk.set('2%');
-    drink.foam.set(2);
-    iceIt(drink);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.water.set(2);
+        this.milk.set('2%');
+        this.foam.set(2);
 
-function chaiTea() {
+    }
 
-    let drink = new Drink();
-    drink.name = 'Chai Tea';
-    drink.water.set(2);
-    drink.foam.set(0);
-    return drink;
+    iced() {
+
+        super.iced();
+        this.water.set(0);
+
+    }
 
 }
 
-function londonFog() {
+class ChaiTeaLatte extends TeaLatte {
 
-    let drink = new Drink();
-    drink.name = 'London Fog Tea Latte';
-    drink.syrups['Vanilla'].set(4);
-    drink.water.set(2);
-    drink.milk.set('2%');
-    drink.foam.set(2);
-    iceIt(drink);
-    return drink;
+    constructor() {
+
+        super();
+        this.name = 'Chai Tea Latte';
+        this.syrups['Chai'].set(this.getSyrupCount());
+
+    }
+    
+}
+
+class Tea extends Drink {
+
+    constructor(name) {
+
+        super();
+        this.name = name + ' Tea';
+
+    }
 
 }
 
-function earlGreyTea() {
+class ChaiTea extends Tea {
 
-    let drink = chaiTea();
-    drink.name = 'Earl Grey Tea';
-    return drink;
+    constructor() {
+
+        super('Chai');
+
+    }
+    
+}
+
+class EarlGreyTea extends Tea {
+
+    constructor() {
+
+        super('Earl Grey');
+
+    }
+    
+}
+
+class RoyalEnglishBreakfastTea extends Tea {
+
+    constructor() {
+
+        super('Royal English Breakfast');
+
+    }
+    
+}
+
+class LondonFogTeaLatte extends TeaLatte {
+
+    constructor() {
+
+        super();
+        this.name = 'London Fog Tea Latte';
+        this.syrups['Vanilla'].set(this.getSyrupCount());
+
+    }
 
 }
 
-function royalEnglishBreakfastTea() {
+class RoyalEnglishBreakfastTeaLatte extends TeaLatte {
 
-    let drink = chaiTea();
-    drink.name = 'Royal English Breakfast Tea';
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Royal English Breakfast Tea Latte';
+        this.syrups['Liquid Cane Sugar'].set(this.getSyrupCount());
 
-function royalEnglishBreakfastTeaLatte() {
-
-    let drink = new Drink();
-    drink.name = 'Royal English Breakfast Tea Latte';
-    drink.syrups['Liquid Cane Sugar'].set(4);
-    drink.water.set(2);
-    drink.milk.set('2%');
-    drink.foam.set(2);
-    iceIt(drink);
-    return drink;
+    }
 
 }
 
-function matchaTeaLatte() {
+class MatchaTeaLatte extends TeaLatte {
 
-    let drink = steamedMilk();
-    drink.name = 'Matcha Tea Latte';
-    drink.syrups['Liquid Cane Sugar'].set(4);
-    drink.matcha.set(3);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Matcha Tea Latte';
+        this.syrups['Liquid Cane Sugar'].set(this.getSyrupCount());
+        this.matcha.set(this.getFrapCount());
+        this.water.set(0);
 
-function emperorsCloudAndMistTea() {
-
-    let drink = chaiTea();
-    drink.name = "Emperor's Cloud and Mist Tea";
-    return drink;
+    }
 
 }
 
-function jadeCitrusMintTea() {
+class EmperorsCloudAndMistTea extends Tea {
 
-    let drink = chaiTea();
-    drink.name = 'Jade Citrus Mint Tea';
-    return drink;
+    constructor() {
+
+        super('Emperor\'s Cloud and Mist');
+
+    }
+    
+}
+
+class JadeCitrusMintTea extends Tea {
+
+    constructor() {
+
+        super('Jade Citrus Mint');
+
+    }
+    
+}
+
+class PeachTranquilityTea extends Tea {
+
+    constructor() {
+
+        super('Peach Tranquility');
+
+    }
+    
+}
+
+class MintMajestyTea extends Tea {
+
+    constructor() {
+
+        super('Mint Majesty');
+
+    }
+    
+}
+
+class HoneyCitrusMintTea extends Drink {
+
+    constructor() {
+
+        super();
+        this.name = 'Honey Citrus Mint Tea';
+        this.counts.syrups = [1, 1, 2, 2, 0];
+        this.syrups['Honey Blend'].set(this.getSyrupCount());
+        this.water.set(2);
+        this.juice.lemonade.set(2);
+
+    }
 
 }
 
-function honeyCitrusMintTea() {
-
-    let drink = new Drink();
-    drink.name = 'Honey Citrus Mint Tea';
-    drink.syrups['Honey Blend'].set(2);
-    drink.water.set(2);
-    drink.juice.lemonade.set(2);
-    drink.foam.set(0);
-    return drink;
-
-}
-
-function mintMajestyTea() {
-
-    let drink = chaiTea();
-    drink.name = 'Mint Majesty Tea';
-    return drink;
-
-}
-
-function peachTranquilityTea() {
-
-    let drink = chaiTea();
-    drink.name = 'Peach Tranquility Tea';
-    return drink;
-
-}
-
-drinks.earlGreyTea = earlGreyTea;
-drinks.chaiTea = chaiTea;
-drinks.royalEnglishBreakfastTea = royalEnglishBreakfastTea;
-drinks.jadeCitrusMintTea = jadeCitrusMintTea;
-drinks.emperorsCloudAndMistTea = emperorsCloudAndMistTea;
-drinks.mintMajestyTea = mintMajestyTea;
-drinks.peachTranquilityTea = peachTranquilityTea;
-drinks.honeyCitrusMintTea = honeyCitrusMintTea;
-drinks.londonFog = londonFog;
-drinks.royalEnglishBreakfastTeaLatte = royalEnglishBreakfastTeaLatte;
-drinks.chaiTeaLatte = chaiTeaLatte;
-drinks.matchaTeaLatte = matchaTeaLatte;
+drinks.EarlGreyTea = EarlGreyTea;
+drinks.ChaiTea = ChaiTea;
+drinks.RoyalEnglishBreakfastTea = RoyalEnglishBreakfastTea;
+drinks.JadeCitrusMintTea = JadeCitrusMintTea;
+drinks.EmperorsCloudAndMistTea = EmperorsCloudAndMistTea;
+drinks.MintMajestyTea = MintMajestyTea;
+drinks.PeachTranquilityTea = PeachTranquilityTea;
+drinks.HoneyCitrusMintTea = HoneyCitrusMintTea;
+drinks.LondonFogTeaLatte = LondonFogTeaLatte;
+drinks.RoyalEnglishBreakfastTeaLatte = RoyalEnglishBreakfastTeaLatte;
+drinks.ChaiTeaLatte = ChaiTeaLatte;
+drinks.MatchaTeaLatte = MatchaTeaLatte;

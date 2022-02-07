@@ -1,114 +1,144 @@
 
-function hotChocolate() {
+class HotChocolate extends Mocha {
 
-    let drink = mocha();
-    drink.name = 'Hot Chocolate';
-    drink.shots.set(0);
-    return drink;
+    constructor() {
+
+        super();
+        this.name = 'Hot Chocolate';
+        this.shots.set(0);
+
+    }
+
+}
+class WhiteHotChocolate extends WhiteMocha {
+
+    constructor() {
+
+        super();
+        this.name = 'White Hot Chocolate';
+        this.shots.set(0);
+
+    }
+
+}
+class PeppermintHotChocolate extends PeppermintMocha {
+
+    constructor() {
+
+        super();
+        this.name = 'Peppermint Hot Chocolate';
+        this.shots.set(0);
+
+    }
+
+}
+class PeppermintWhiteHotChocolate extends PeppermintWhiteMocha {
+
+    constructor() {
+
+        super();
+        this.name = 'Peppermint White Hot Chocolate';
+        this.shots.set(0);
+
+    }
 
 }
 
-function whiteHotChocolate() {
+class SteamedAppleJuice extends Drink {
 
-    let drink = whiteMocha();
-    drink.name = 'White Hot Chocolate';
-    drink.shots.set(0);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Steamed Apple Juice';
+        this.juice.apple.set(2);
 
-function peppermintHotChocolate() {
-
-    let drink = hotChocolate();
-    drink.name = 'Peppermint Hot Chocolate';
-    drink.syrups['Peppermint'].set(4);
-    drink.topping['Chocolate Curls'].set(true);
-    return drink;
-}
-
-function peppermintWhiteHotChocolate() {
-
-    let drink = whiteHotChocolate();
-    drink.name = 'Peppermint White Hot Chocolate';
-    drink.syrups['Peppermint'].set(4);
-    drink.topping['Chocolate Curls'].set(true);
-    return drink;
-}
-
-function steamedAppleJuice() {
-
-    let drink = new Drink();
-    drink.name = 'Steamed Apple Juice';
-    drink.foam.set(0);
-    return drink;
+    }
 
 }
 
-function caramelAppleSpice() {
+class CaramelAppleSpice extends SteamedAppleJuice {
 
-    let drink = steamedAppleJuice();
-    drink.name = 'Caramel Apple Spice';
-    drink.syrups['Cinnamon Dolce'].set(4);
-    drink.topping.whip.set(2);
-    drink.topping.caramel.set(2);
-    return drink;
+    constructor() {
 
-}
-
-function steamedMilk() {
-
-    let drink = latte();
-    drink.name = 'Steamed Milk';
-    drink.shots.set(0);
-    return drink;
+        super();
+        this.name = 'Caramel Apple Spice';
+        this.syrups['Cinnamon Dolce'].set(this.getSyrupCount());
+        this.topping.whip.set(2);
+        this.topping.caramel.set(2);
+        
+    }
 
 }
 
-function pistachioCreme() {
+class SteamedMilk extends Latte {
 
-    let drink = pistachioLatte();
-    drink.name = 'Pistatio Cream';
-    drink.shots.set(0);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Steamed Milk';
+        this.shots.set(0);
 
-function caramelBruleCreme() {
-
-    let drink = caramelBruleLatte();
-    drink.name = 'Caramel Brule Cream';
-    drink.shots.set(0);
-    return drink;
+    }
 
 }
 
-function chestnutPralineCreme() {
+class PistachioCream extends PistachioLatte {
 
-    let drink = chestnutPralineLatte();
-    drink.name = 'Chestnut Praline Cream';
-    drink.shots.set(0);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Pistachio Cream';
+        this.shots.set(0);
 
-function vanillaCreme() {
-
-    let drink = steamedMilk();
-    drink.name = 'Vanilla Creme';
-    drink.syrups['Vanilla'].set(4);
-    drink.topping.whip.set(2);
-    return drink;
+    }
 
 }
 
-drinks.hotChocolate = hotChocolate;
-drinks.whiteHotChocolate = whiteHotChocolate;
-drinks.peppermintHotChocolate = peppermintHotChocolate;
-drinks.peppermintWhiteHotChocolate = peppermintWhiteHotChocolate;
-drinks.caramelAppleSpice = caramelAppleSpice;
-drinks.steamedAppleJuice = steamedAppleJuice;
-drinks.steamedMilk = steamedMilk;
-drinks.pistachioCreme = pistachioCreme;
-drinks.caramelBruleCreme = caramelBruleCreme;
-drinks.chestnutPralineCreme = chestnutPralineCreme;
-drinks.vanillaCreme = vanillaCreme;
+class CaramelBruleCream extends CaramelBruleLatte {
+
+    constructor() {
+
+        super();
+        this.name = 'Caramel Brule Cream';
+        this.shots.set(0);
+
+    }
+
+}
+
+class ChestnutPralineCream extends ChestnutPralineLatte {
+
+    constructor() {
+
+        super();
+        this.name = 'Chestnut Praline Cream';
+        this.shots.set(0);
+
+    }
+
+}
+
+class VanillaCream extends SteamedMilk {
+
+    constructor() {
+
+        super();
+        this.name = 'Vanilla Cream';
+        this.syrups['Vanilla'].set(this.getSyrupCount());
+        this.topping.whip.set(2);
+
+    }
+
+}
+
+drinks.HotChocolate = HotChocolate;
+drinks.WhiteHotChocolate = WhiteHotChocolate;
+drinks.PeppermintHotChocolate = PeppermintHotChocolate;
+drinks.PeppermintWhiteHotChocolate = PeppermintWhiteHotChocolate;
+drinks.CaramelAppleSpice = CaramelAppleSpice;
+drinks.SteamedAppleJuice = SteamedAppleJuice;
+drinks.SteamedMilk = SteamedMilk;
+drinks.PistachioCream = PistachioCream;
+drinks.CaramelBruleCream = CaramelBruleCream;
+drinks.ChestnutPralineCream = ChestnutPralineCream;
+drinks.VanillaCream = VanillaCream;

@@ -1,90 +1,192 @@
 
-function icedBlackTea() {
+class IcedTea extends Drink {
 
-    let drink = new Drink();
-    drink.name = 'Iced Black Tea';
-    drink.water.set(2);
-    drink.foam.set(0);
-    drink.ice.set(2);
-    drink.tea.black.set(2);
-    drink.syrups['Liquid Cane Sugar'].set(4);
-    return drink;
+    constructor(tea, lemonade) {
 
-}
+        super();
+        this.iced();
+        this.name = 'Iced ' + tea + ' Tea';
+        if (lemonade) { 
+            this.name = this.name + ' Lemonade';
+            this.juice.lemonade.set(2);
+        } else {
+            this.water.set(2);
+        }
+        console.log(tea);
+        if (tea == 'Passion Tango') {
+            tea = 'passion';
+        } else {
+            tea = tea.toLowerCase();
+        }
 
-function icedBlackTeaLemonade() {
+        this.tea[tea].set(2);
+        this.syrups['Liquid Cane Sugar'].set(this.getSyrupCount());
 
-    let drink = icedBlackTea();
-    drink.name = 'Iced Black Tea Lemonade';
-    drink.water.set(0);
-    drink.juice.lemonade.set(2);
-    return drink;
+    }
 
-}
+    canBeTrenta() {
+        
+        return true;
 
-function icedGreenTea() {
-
-    let drink = new icedBlackTea();
-    drink.name = 'Iced Green Tea';
-    drink.tea.green.set(2);
-    drink.tea.black.set(0);
-    return drink;
-
-}
-
-function icedGreenTeaLemonade() {
-
-    let drink = icedBlackTeaLemonade();
-    drink.name = 'Iced Green Tea Lemonade';
-    drink.tea.green.set(2);
-    drink.tea.black.set(0);
-    return drink;
+    }
 
 }
 
-function icedPassionTangoTea() {
+class IcedBlackTea extends IcedTea {
 
-    let drink = new icedBlackTea();
-    drink.name = 'Iced Passion Tango Tea';
-    drink.tea.passion.set(2);
-    drink.tea.black.set(0);
-    return drink;
+    constructor() {
 
-}
+        super('Black', false);
 
-function icedPassionTangoTeaLemonade() {
-
-    let drink = icedBlackTeaLemonade();
-    drink.name = 'Iced Passion Tango Tea Lemonade';
-    drink.tea.passion.set(2);
-    drink.tea.black.set(0);
-    return drink;
+    }
 
 }
 
-function icedPeachGreenTea() {
+class IcedBlackTeaLemonade extends IcedTea {
 
-    let drink = new icedGreenTea();
-    drink.name = 'Iced Peach Green Tea';
-    drink.juice.peach.set(2);
-    return drink;
+    constructor() {
 
-}
+        super('Black', true);
 
-function icedPeachGreenTeaLemonade() {
-
-    let drink = icedGreenTeaLemonade();
-    drink.name = 'Iced Peach Green Tea Lemonade';
-    drink.juice.peach.set(2);
-    return drink;
+    }
 
 }
 
-drinks.icedBlackTea = icedBlackTea;
-drinks.icedBlackTeaLemonade = icedBlackTeaLemonade;
-drinks.icedGreenTea = icedGreenTea;
-drinks.icedGreenTeaLemonade = icedGreenTeaLemonade;
-drinks.icedPassionTangoTea = icedPassionTangoTea;
-drinks.icedPassionTangoTeaLemonade = icedPassionTangoTeaLemonade;
-drinks.icedPeachGreenTea = icedPeachGreenTea;
-drinks.icedPeachGreenTeaLemonade = icedPeachGreenTeaLemonade;
+class IcedGreenTea extends IcedTea {
+
+    constructor() {
+
+        super('Green', false);
+
+    }
+
+}
+
+class IcedGreenTeaLemonade extends IcedTea {
+
+    constructor() {
+
+        super('Green', true);
+
+    }
+
+}
+
+class IcedPassionTangoTea extends IcedTea {
+
+    constructor() {
+
+        super('Passion Tango', false);
+
+    }
+
+}
+
+class IcedPassionTangoTeaLemonade extends IcedTea {
+
+    constructor() {
+
+        super('Passion Tango', true);
+
+    }
+
+}
+
+class IcedPeachGreenTea extends IcedGreenTea {
+
+    constructor() {
+
+        super();
+        this.juice.peach.set(2);
+        this.name = 'Iced Peach Green Tea';
+
+    }
+
+}
+
+class IcedPeachGreenTeaLemonade extends IcedGreenTeaLemonade {
+
+    constructor() {
+
+        super();
+        this.juice.peach.set(2);
+        this.name = 'Iced Peach Green Tea Lemonade';
+
+    }
+
+}
+
+class IcedChaiTeaLatte extends ChaiTeaLatte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedLondonFogTeaLatte extends LondonFogTeaLatte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedRoyalEnglishBreakfastTeaLatte extends RoyalEnglishBreakfastTeaLatte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedMatchaTeaLatte extends MatchaTeaLatte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedMatchaTeaLemonade extends IcedMatchaTeaLatte {
+
+    constructor() {
+
+        super();
+        this.name = 'Iced Matcha Lemonade';
+        this.milk.set(0);
+        this.juice.lemonade.set(2);
+
+    }
+
+}
+
+drinks.IcedBlackTea = IcedBlackTea;
+drinks.IcedBlackTeaLemonade = IcedBlackTeaLemonade;
+drinks.IcedGreenTea = IcedGreenTea;
+drinks.IcedGreenTeaLemonade = IcedGreenTeaLemonade;
+drinks.IcedPassionTangoTea = IcedPassionTangoTea;
+drinks.IcedPassionTangoTeaLemonade = IcedPassionTangoTeaLemonade;
+drinks.IcedPeachGreenTea = IcedPeachGreenTea;
+drinks.IcedPeachGreenTeaLemonade = IcedPeachGreenTeaLemonade;
+drinks.IcedChaiTeaLatte = IcedChaiTeaLatte;
+drinks.IcedLondonFogTeaLatte = IcedLondonFogTeaLatte;
+drinks.IcedRoyalEnglishBreakfastTeaLatte = IcedRoyalEnglishBreakfastTeaLatte;
+drinks.IcedMatchaTeaLatte = IcedMatchaTeaLatte;
+drinks.IcedMatchaTeaLemonade = IcedMatchaTeaLemonade;

@@ -1,5 +1,5 @@
 // parent class
-
+const flavours = ['Vanilla', 'Sf Vanilla', 'Caramel', 'Peppermint', 'Honey Blend', 'Raspberry', 'Chestnut Praline', 'Toffee Nut', 'Hazelnut', 'Mocha', 'White Mocha', 'Chai', 'Caramel Brule', 'Pistachio', "Dark Caramel", "Classic", "Liquid Cane Sugar", 'Cinnamon Dolce', "Irish Cream", 'Sugar Cookie', "Brown Sugar"];
 class Customization {
 
     constructor() {
@@ -49,7 +49,7 @@ class RangeCustomization extends Customization {
         super();
         this.value = val;
         this.default = val;
-        this.str = ['No '+name, 'Light '+name, name, 'Extra '+name];
+        this.str = ['No ' + name, 'Light ' + name, name, 'Extra ' + name];
 
     }
 
@@ -99,7 +99,7 @@ class Size extends Customization {
 
 }
 
-class Espresso extends Customization {
+class EspressoType extends Customization {
 
     constructor() {
 
@@ -121,6 +121,12 @@ class Espresso extends Customization {
     isRistretto() {
 
         return this.ristretto;
+
+    }
+
+    isDefault() {
+
+        return super.isDefault() && this.ristretto == this.defaultR;
 
     }
 
@@ -225,14 +231,11 @@ class Syrup extends Customization {
 }
 
 function generateSyrups() {
-
-    const syrups = ['Vanilla', 'Sf Vanilla', 'Caramel', 'Peppermint', 'Honey Blend', 'Raspberry', 'Chestnut Praline', 'Toffee Nut', 'Hazelnut', 'Mocha', 'White Mocha', 'Chai', 'Caramel Brule', 'Pistachio', "Dark Caramel", "Classic", "Liquid Cane Sugar", 'Cinnamon Dolce', "Irish Cream", 'Sugar Cookie', "Brown Sugar"];
-
     const dic = {};
 
-    for (let i = 0; i < syrups.length; i++) {
+    for (let i = 0; i < flavours.length; i++) {
 
-        dic[syrups[i]] = new Syrup(syrups[i]);
+        dic[flavours[i]] = new Syrup(flavours[i]);
 
     }
 
@@ -260,7 +263,7 @@ class Milk extends Customization {
         this.str = ['', 'Nonfat Milk', '1% Milk', '2% Milk', 'Whole Milk', 'Lactaid Milk', "Coconut MIlk", 'Almond Milk', "Soy MIlk", "Oat Mlk", "Heavy Cream", "Breve"];
         this.splash = new Splash();
     }
-    
+
     toString() {
 
         if (this.splash.value == 0) {
@@ -278,7 +281,7 @@ class Milk extends Customization {
     }
 
     set(val) {
-        if (typeof(val) == 'string') {
+        if (typeof (val) == 'string') {
             val = val + " Milk";
         }
         super.set(val);
@@ -336,7 +339,8 @@ function generateToppings() {
     dic.whip = new RangeCustomization("Whip", 0);
     dic.coalfoam = new RangeCustomization("Cold Foam", 0);
     dic.vanillasweetcreamcoldfoam = new RangeCustomization("Vanilla Sweet Cream Cold Foam", 0);
-    dic.irshcreamcoldfoam = new RangeCustomization("Irish Cream Cold Foam", 0);
+    dic.vanillasweetcream = new RangeCustomization("Vanilla Sweet Cream", 0);
+    dic.irishcreamcoldfoam = new RangeCustomization("Irish Cream Cold Foam", 0);
     dic.saltedcaramelcoldfoam = new RangeCustomization("Salted Caramel Cold Foam", 0);
 
     return dic;

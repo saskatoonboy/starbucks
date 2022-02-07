@@ -1,87 +1,36 @@
 
 const outputText = document.getElementById('output');
+const hot = new Classification([2, 3, 4, 5]);
+const cold = new Classification([3, 4, 6, 7]);
+const frap = new Classification([2, 3, 4]);
+const cold_brew = new Classification([1, 2, 3, 4])
 
-class Drink {
+function randRun(func, start, increment) {
 
-  constructor() {
+  if (increment < 0) {
 
-    this.size = new Size();
-    this.espresso = new Espresso();
-    this.temp = new Temp();
-    this.shots = new Shots();
-    this.syrups = generateSyrups();
-    this.milk = new Milk();
-    this.foam = new RangeCustomization('Foam', 2);
-    this.room = new RangeCustomization('Room', 2);
-    this.water = new RangeCustomization('Water', 0);
-    this.ice = new RangeCustomization('Ice', 0);
-    this.sweeteners = generateSweeteners();
-    this.topping = generateToppings();
-    this.cup = new Size();
-    this.juice = { apple: new RangeCustomization("Apple Juice", 0), peach: new RangeCustomization('Peach Blend', 0), lemonade: new RangeCustomization("Lemonade", 0) };
-    this.matcha = new Sweetener('Matcha');
-    this.tea = { green: new RangeCustomization("Green Tea", 0), passion: new RangeCustomization("Passion Tango Tea", 0), black: new RangeCustomization("Black Tea", 0) };
-    this.vanillabean = new Sweetener('Vanilla Bean Powder');
-    this.strawberrypuree = new RangeCustomization('Strawberry Puree', 0);
-    this.refresher = { mango: new RangeCustomization("Mango Dragonfruit", 0), strawberry: new RangeCustomization("Strawberry Acai", 0), kiwi: new RangeCustomization("Kiwi Starfruit", 0) };
-    this.inclusions = { mango: new Sweetener("Dragonfruit Inclusions", 0), strawberry: new Sweetener("Strawberry Inclusions", 0), kiwi: new Sweetener("Kiwi Inclusions", 0) };
-    this.frapchips = new Sweetener('Frap Chips', 0);
-    this.name = 'Latte'
+    increment = 0;
 
   }
 
-  display() {
-    const vals = [this.espresso, this.temp, this.shots, this.milk, this.foam, this.room, this.water, this.ice, this.matcha, this.vanillabean, this.strawberrypuree];
-    let out = this.size.toString() + ' ' + this.name;
-    for (let i = 0; i < vals.length; i++) {
-      if (vals[i].toString() != '' && !vals[i].isDefault()) {
-        out = out + '<br>' + vals[i].toString();
-      }
-    }
-    const vals2 = [this.syrups, this.sweeteners, this.toppping, this.juice, this.tea, this.refresher, this.inclusions];
-    for (let i = 0; i < vals2.length; i++) {
-      for (let key in vals2[i]) {
+  let threshold = Math.random();
+  let returns = [];
 
-        if (vals2[i][key].toString() != '' && !vals2[i][key].isDefault()) {
-          out = out + '<br>' + vals2[i][key].toString();
-        }
+  while (threshold < start) {
 
-      }
-    }
-    if (this.cup.value != this.size.value) {
-      out = out + '<br>In a ' + this.cup.toString() + ' cup';
-    }
-    if (this.espresso.ristretto && !this.espresso.defaultR) {
+    returns.push(func());
+    start = start * increment;
 
-      out = out + '<br>Ristretto';
-
-    }
-    outputText.innerHTML = out;
   }
 
-  setDefaults() {
-    const vals = [this.espresso, this.temp, this.shots, this.milk, this.foam, this.room, this.water, this.ice, this.matcha, this.vanillabean, this.strawberrypuree];
-    for (let i = 0; i < vals.length; i++) {
-      if (vals[i].toString() != '' && !vals[i].isDefault()) {
-        vals[i].setDefault();
-      }
-    }
-    const vals2 = [this.syrups, this.sweeteners, this.toppping, this.juice, this.tea, this.refresher];
-    for (let i = 0; i < vals2.length; i++) {
-      for (let key in vals2[i]) {
+  return returns;
 
-        if (vals2[i][key].toString() != '' && !vals2[i][key].isDefault()) {
-          vals2[i][key].setDefault();
-        }
-
-      }
-    }
-  }
 }
 
 let drink;
 function makeDrink() {
 
+  // choose random base drink
   let rand = Math.random();
   let total = 0;
   let name;
@@ -93,11 +42,91 @@ function makeDrink() {
       console.log(name);
       break
     }
+  }
+  drink = new drinks[name]();
+
+  // random size
+  if (!(drink instanceof Espresso)) {
+    let chosenSize = Math.floor(Math.random() * 5);
+
+    while (!((chosenSize > 0 || drink.temp.value > 0) && (chosenSize < 4 || drink.canBeTrenta()) && chosenSize >= 0 && chosenSize <= 4)) {
+
+      chosenSize = Math.floor(Math.random() * 5);
+
+    }
+    drink.changeSize(chosenSize);
+  }
+  drink.setDefaults();
+
+  // random ice
+  if (drink.temp.value == 0 && !(drink instanceof Frappuccino || drink instanceof BlendedStrawberryLemonade)) {
+
+    drink.ice.set(Math.floor(Math.random() * 4));
 
   }
-  drink = drinks[name]();
-  drink.setDefaults();
+
+  // random shots
+  if (!(drink instanceof Refresher || (drink instanceof TeaLatte && !drink instanceof ChaiTeaLatte) || drink instanceof IcedTea || drink instanceof Tea || drink instanceof Lemonade || drink instanceof BlendedStrawberryLemonade)) {
+    let chosenShots = randRun(pickShot, 0.30, 0.50);
+    let shotAdjustment = drink.shots.value;
+    for (let i = 0; i < chosenShots.length; i++) {
+
+      shotAdjustment = shotAdjustment + chosenShots[i];
+      if (shotAdjustment < 0) {
+        shotAdjustment = 0;
+      }
+
+    }
+
+    drink.shots.set(shotAdjustment);
+  }
+
+  let chosenFlavours = randRun(pickFlavour, 0.75, 0.30);
+  for (let i = 0; i < chosenFlavours.length; i++) {
+
+    let chosen = chosenFlavours[i];
+
+    if (chosen in drink.defaultFlavour) {
+      drink.syrups[chosen].set(0);
+    } else {
+      drink.syrups[chosen].set(Math.floor(drink.getSyrupCount() / (chosenFlavours.length + drink.defaultFlavour.length)));
+    }
+
+  }
+
+  for (let i = 0; i < drink.defaultFlavour.length; i++) {
+
+    let chosen = drink.defaultFlavour[i];
+
+
+    drink.syrups[chosen].set(Math.ceil(drink.getSyrupCount() / (chosenFlavours.length + drink.defaultFlavour.length)));
+
+
+  }
+
   drink.display()
 }
 
+function pickFlavour() {
+
+  return flavours[Math.floor(Math.random() * flavours.length)];
+
+}
+
+function pickShot() {
+
+  const rand = Math.random();
+  if (rand < 0.5) {
+    return -1;
+  }
+  return 1;
+
+}
+
 makeDrink();
+
+function openSettings() {
+
+
+
+}

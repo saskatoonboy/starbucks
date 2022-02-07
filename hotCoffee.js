@@ -1,269 +1,356 @@
-function tradMisto() {
 
-    let misto = new Drink();
-    misto.name = 'Trad Misto';
-    misto.milk.set('2%');
-    return misto
+class TraditionalMisto extends Drink {
 
-}
+    constructor() {
 
-function blondeRoast() {
-    let roast = new Drink();
-    roast.name = "Blonde Roast";
-    roast.foam.set(0);
-    return roast;
-}
+        super();
+        this.name = 'Traditional Misto';
+        this.milk.set('2%');
+        this.foam.set(2);
 
-function pikeRoast() {
-    let roast = new Drink();
-    roast.name = "Pike Roast";
-    roast.foam.set(0);
-    return roast;
-}
-
-function decafePikeRoast() {
-    let roast = new Drink();
-    roast.name = "Decaf Pike Roast";
-    roast.foam.set(0);
-    return roast;
-}
-
-function signatureRoast() {
-    let roast = new Drink();
-    roast.name = "Dark Roast";
-    roast.foam.set(0);
-    return roast;
-}
-
-function americano() {
-
-    let drink = new Drink() 
-    drink.name = 'Americano';
-    drink.foam.set(0);
-    drink.shots.set(3);
-    drink.water.set(2);
-    iceIt(drink);
-    return drink;
+    }
 
 }
 
-function americanoMisto() {
-    let drink = americano();
-    drink.name = 'Americano Misto'
-    drink.foam.set(2);
-    drink.milk.set('2%');
-    return drink;
+class BlondeRoast extends Drink {
+
+    constructor() {
+
+        super();
+        this.name = 'Blonde Roast';
+
+    } 
 
 }
 
-function irishCreamAmericano() {
-    let drink = americanoMisto();
-    drink.name = 'Irish Cream Americano'
-    drink.topping['Cocoa Powder'].set(2);
-    drink.syrups['Irish Cream'].set(4);
-    return drink;
+class PikeRoast extends Drink {
+
+    constructor() {
+
+        super();
+        this.name = 'Pike Roast';
+
+    } 
 
 }
 
-function brownSugarOatAmericano() {
-    let drink = americanoMisto();
-    drink.name = 'Brown Sugar Oat Americano'
-    drink.milk.set('Oat');
-    drink.topping['Cinnamon'].set(2);
-    drink.syrups['Brown Sugar'].set(4);
-    drink.espresso.set('Blonde');
-    return drink;
+class DarkRoast extends Drink {
+
+    constructor() {
+
+        super();
+        this.name = 'Dark Roast';
+
+    } 
 
 }
 
-function latte() {
+class Americano extends Drink {
 
-    let drink = new Drink();
-    drink.name = 'Latte';
-    drink.milk.set('2%');
-    drink.shots.set(2);
-    iceIt(drink);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Americano';
+        this.water.set(2);
+        this.counts.shots = [1, 2, 3, 4, 0];
+        this.shots.set(this.getShotCount());
 
-function cappuccino() {
-    let drink = latte();
-    drink.name = 'Cappuccino';
-    return drink;
-}
+    }
 
-function espresso() {
-
-    let drink = new Drink();
-    drink.name = 'Doppio Espresso';
-    drink.shots.set(2);
-    drink.size.set(-1);
-    drink.cup.set(-1);
-    iceIt(drink);
-    return drink;
+    iced() {
+        super.iced();
+        this.counts.shots = [0, 2, 3, 4, 0];
+    }
 
 }
 
-function espressoConPanna() {
+class AmericanoMisto extends Americano {
 
-    let drink = espresso();
-    drink.name = 'Doppio Espresso Con Panna';
-    drink.topping.whip.set(2);
-    drink.temp.set(2);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Americano Misto';
+        this.milk.set('2%');
+        this.foam.set(2);
 
-function flatWhite() {
-
-    let drink = new Drink();
-    drink.name = 'Flat White';
-    drink.milk.set('Whole');
-    drink.espresso.ristretto = true;
-    drink.shots.set(3);
-    iceIt(drink);
-    return drink;
+    }
 
 }
 
-function honeyAlmondFlatWhite() {
+class IrishCreamAmericano extends AmericanoMisto {
 
-    let drink = flatWhite();
-    drink.name = 'Honey Almond Flat White';
-    drink.milk.set('Almond');
-    drink.espresso.set('Blonde');
-    drink.syrups['Honey Blend'].set(4);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Irish Cream Americano';
+        this.topping['Cocoa Powder'].set(2);
+        this.syrups['Irish Cream'].set(this.getSyrupCount());
 
-function pistachioLatte() {
-
-    let drink = latte();
-    drink.name = 'Pistachio Latte';
-    drink.syrups['Pistachio'].set(4);
-    drink.topping['Salted Brown Butter'].set(2);
-    return drink;
+    }
 
 }
 
-function sugarCookieOatLatte() {
+class BrownSugarOatAmericano extends AmericanoMisto {
 
-    let drink = latte();
-    drink.name = 'Sugar Cookie Oat Latte';
-    drink.syrups['Sugar Cookie'].set(4);
-    drink.milk.set("Oat");
-    drink.topping['Red and Green Sprinkles'].set(2);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Brown Sugar Oat Americano';
+        this.topping['Cinnamon'].set(2);
+        this.syrups['Brown Sugar'].set(this.getSyrupCount());
+        this.espresso.set('Blonde');
 
-function caramelBruleLatte() {
-
-    let drink = latte();
-    drink.name = 'Caramel Brule Latte';
-    drink.syrups['Caramel Brule'].set(4);
-    drink.topping['Caramel Brule'].set(2);
-    drink.topping.whip.set(2);
-    return drink;
+    }
 
 }
 
-function chestnutPralineLatte() {
+class Latte extends Drink {
 
-    let drink = latte();
-    drink.name = 'Chestnut Praline Latte';
-    drink.syrups['Chestnut Praline'].set(4);
-    drink.topping['Chestnut Praline'].set(2);
-    drink.topping.whip.set(2);
-    return drink;
+    constructor() {
 
-}
-
-function cinnamonDolceLatte() {
-
-    let drink = latte();
-    drink.name = 'Cinnamon Dolce Latte';
-    drink.syrups['Cinnamon Dolce'].set(4);
-    drink.topping['Cinnamon Dolce'].set(2);
-    drink.topping.whip.set(2);
-    return drink;
+        super();
+        this.name = 'Latte';
+        this.milk.set('2%');
+        this.shots.set(this.getShotCount());
+    }
 
 }
 
-function caramelMacchiato() {
+class Cappuccino extends Latte {
 
-    let drink = latte();
-    drink.name = 'Caramel Macchiato';
-    drink.syrups['Vanilla'].set(3);
-    drink.topping.caramel.set(2);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Cappuccino';
 
-function mocha() {
-
-    let drink = latte();
-    drink.name = 'Mocha';
-    drink.syrups['Mocha'].set(4);
-    drink.topping.whip.set(2);
-    return drink;
+    }
 
 }
 
-function whiteMocha() {
+class Espresso extends Drink {
 
-    let drink = mocha();
-    drink.name = 'White Mocha';
-    drink.syrups['White Mocha'].set(4);
-    drink.syrups['Mocha'].set(0);
-    return drink;
+    constructor() {
+
+        super();
+        this.names = ['', 'Solo', 'Doppio', 'Triple', 'Quad'];
+        this.name = 'Doppio Espresso';
+        this.shots.set(2);
+        this.size.set(0);
+        this.size.str[0] = '';
+        this.cup.set(0);
+
+    }
 
 }
 
-function peppermintMocha() {
+class EspressoConPanna extends Espresso {
 
-    let drink = mocha();
-    drink.name = 'Peppermint Mocha';
-    drink.syrups['Peppermint'].set(4);
-    drink.topping['Chocolate Curls'].set(2);
-    return drink;
+    constructor() {
+
+        super();
+        this.name = 'Doppio Espresso Con Panna';
+        this.topping.whip.set(2);
+
+    }
+
 }
 
-function peppermintWhiteMocha() {
+class FlatWhite extends Drink {
 
-    let drink = whiteMocha();
-    drink.name = 'Peppermint White Mocha';
-    drink.syrups['Peppermint'].set(4);
-    drink.topping['Chocolate Curls'].set(2);
-    return drink;
+    constructor() {
+
+        super();
+        this.name = 'Flat White';
+        this.milk.set('Whole');
+        this.espresso.makeRistretto(true);
+        this.counts.shots = [2, 2, 3, 3, 0];
+        this.shots.set(this.getShotCount);
+
+    }
+
+}
+
+class HoneyAlmondFlatWhite extends FlatWhite {
+
+    constructor() {
+
+        super();
+        this.name = 'Honey Almond Flat White';
+        this.milk.set('Almond');
+        this.syrups['Honey Blend'].set(this.getSyrupCount());
+        this.espresso.set('Blonde');
+
+    }
+
+}
+
+class PistachioLatte extends Latte {
+
+    constructor() {
+
+        super();
+        this.name = 'Pistachio Latte';
+        this.syrups['Pistachio'].set(this.getSyrupCount());
+        this.topping['Salted Brown Butter'].set(2);
+
+    }
+
+}
+
+class SugarCookieOatLatte extends Latte {
+
+    constructor() {
+
+        super();
+        this.name = 'Sugar Cookie Oat Latte';
+        this.syrups['Sugar Cookie'].set(this.getSyrupCount());
+        this.milk.set('Oat');
+        this.topping['Red and Green Sprinkles'].set(2);
+
+    }
+
+}
+
+class CaramelBruleLatte extends Latte {
+
+    constructor() {
+
+        super();
+        this.name = 'Caramel Brule Latte';
+        this.syrups['Caramel Brule'].set(this.getSyrupCount());
+        this.topping['Caramel Brule'].set(2);
+        this.topping.whip.set(2);
+
+    }
+
+}
+
+class ChestnutPralineLatte extends Latte {
+
+    constructor() {
+
+        super();
+        this.name = 'Chestnut Praline Latte';
+        this.syrups['Chestnut Praline'].set(this.getSyrupCount());
+        this.topping['Chestnut Praline'].set(2);
+        this.topping.whip.set(2);
+
+    }
+
+}
+
+class CinnamonDolceLatte extends Latte {
+
+    constructor() {
+
+        super();
+        this.name = 'Cinnamon Dolce Latte';
+        this.syrups['Cinnamon Dolce'].set(this.getSyrupCount());
+        this.topping['Cinnamon Dolce'].set(2);
+        this.topping.whip.set(2);
+
+    }
+
+}
+
+class CaramelMacchiato extends Latte {
+
+    constructor() {
+
+        super();
+        this.name = 'Caramel Macchiato';
+        this.counts.syrups = [1, 2, 3, 4, 0];
+        this.syrups['Vanilla'].set(this.getSyrupCount());
+        this.topping.caramel.set(2);
+
+    }
+
+    iced() {
+
+        super.iced();
+        this.counts.syrups = [0, 2, 3, 5, 0];
+
+    }
+
+}
+
+class Mocha extends Latte {
+
+    constructor() {
+
+        super();
+        this.name = 'Mocha';
+        this.syrups['Mocha'].set(this.getSyrupCount());
+        this.topping.whip.set(2);
+
+    }
+
+}
+
+class WhiteMocha extends Latte {
+
+    constructor() {
+
+        super();
+        this.name = 'White Mocha';
+        this.syrups['White Mocha'].set(this.getSyrupCount());
+        this.topping.whip.set(2);
+
+    }
+
+}
+
+class PeppermintMocha extends Mocha {
+
+    constructor() {
+
+        super();
+        this.name = 'Perppermint Mocha';
+        this.syrups['Mocha'].set(this.getSyrupCount());
+        this.syrups['Peppermint'].set(this.getSyrupCount());
+        this.topping['Chocolate Curls'].set(2);
+
+    }
+
+}
+
+class PeppermintWhiteMocha extends WhiteMocha {
+
+    constructor() {
+
+        super();
+        this.name = 'Peppermint White Mocha';
+        this.syrups['White Mocha'].set(this.getSyrupCount());
+        this.syrups['Peppermint'].set(this.getSyrupCount());
+        this.topping['Chocolate Curls'].set(2);
+
+    }
+
 }
 
 
 
-drinks.tradMisto = tradMisto;
-drinks.blondeRoast = blondeRoast;
-drinks.pikeRoast = pikeRoast;
-drinks.decafePikeRoast = decafePikeRoast;
-drinks.signatureRoast = signatureRoast;
-drinks.americano = americano;
-drinks.irishCreamAmericano = irishCreamAmericano;
-drinks.brownSugarOatAmericano = brownSugarOatAmericano;
-drinks.americanoMisto = americanoMisto;
-drinks.cappuccino = cappuccino;
-drinks.espresso = espresso;
-drinks.espressoConPanna = espressoConPanna;
-drinks.flatWhite = flatWhite;
-drinks.honeyAlmondFlatWhite = honeyAlmondFlatWhite;
-drinks.latte = latte;
-drinks.pistachioLatte = pistachioLatte;
-drinks.caramelBruleLatte = caramelBruleLatte;
-drinks.chestnutPralineLatte = chestnutPralineLatte;
-drinks.sugarCookieOatLatte = sugarCookieOatLatte;
-drinks.cinnamonDolceLatte = cinnamonDolceLatte;
-drinks.caramelMacchiato = caramelMacchiato;
-drinks.mocha = mocha
-drinks.whiteMocha = whiteMocha;
-drinks.peppermintMocha = peppermintMocha;
-drinks.peppermintWhiteMocha = peppermintWhiteMocha;
+drinks.TraditionalMisto = TraditionalMisto;
+drinks.BlondeRoast = BlondeRoast;
+drinks.PikeRoast = PikeRoast;
+drinks.DarkRoast = DarkRoast;
+drinks.Americano = Americano;
+drinks.IrishCreamAmericano = IrishCreamAmericano;
+drinks.BrownSugarOatAmericano = BrownSugarOatAmericano;
+drinks.AmericanoMisto = AmericanoMisto;
+drinks.Cappuccino = Cappuccino;
+drinks.Espresso = Espresso;
+drinks.EspressoConPanna = EspressoConPanna;
+drinks.FlatWhite = FlatWhite;
+drinks.HoneyAlmondFlatWhite = HoneyAlmondFlatWhite;
+drinks.Latte = Latte;
+drinks.PistachioLatte = PistachioLatte;
+drinks.CaramelBruleLatte = CaramelBruleLatte;
+drinks.ChestnutPralineLatte = ChestnutPralineLatte;
+drinks.SugarCookieOatLatte = SugarCookieOatLatte;
+drinks.CinnamonDolceLatte = CinnamonDolceLatte;
+drinks.CaramelMacchiato = CaramelMacchiato;
+drinks.Mocha = Mocha
+drinks.WhiteMocha = WhiteMocha;
+drinks.PeppermintMocha = PeppermintMocha;
+drinks.PeppermintWhiteMocha = PeppermintWhiteMocha;

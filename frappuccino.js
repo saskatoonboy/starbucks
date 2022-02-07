@@ -1,319 +1,399 @@
 
-function pistachioFrappuccino() {
+class Frappuccino extends Drink {
 
-    let drink = new Drink();
-    drink.name = 'Pistachio Frappaccino'
-    drink.milk.set('3%');
-    drink.foam.set(0);
-    drink.topping.whip.set(2);
-    drink.topping['Salted Brown Butter'].set(2);
-    drink.syrups['Pistachio'].set(2);
-    return drink;
+    constructor(syrup, cream) {
 
-}
+        super();
+        this.iced();
+        this.milk.set('Whole');
+        this.topping.whip.set(2);
+        if (syrup != undefined) {
 
-function pistachioCreamFrappuccino() {
+            this.syrups[syrup].set(this.getFrapCount());
+            if (cream) {
 
-    let drink = new pistachioFrappuccino();
-    drink.name = 'Pistachio Cream Frappuccino'
-    return drink;
+                this.name = syrup + ' Cream Frappuccino';
 
-}
+            } else {
 
-function sugarCookieOatFrappuccino() {
+                this.name = syrup + ' Frappuccino';
 
-    let drink = new Drink();
-    drink.name = 'Sugar Cookie Oat Frappaccino'
-    drink.milk.set('Oat');
-    drink.foam.set(0);
-    drink.topping.whip.set(2);
-    drink.topping['Red and Green Sprinkles'].set(2);
-    drink.syrups['Sugar Cookie'].set(2);
-    return drink;
+            }
 
-}
+        }
 
-function sugarCookieCreamOatFrappuccino() {
+    }
 
-    let drink = new sugarCookieOatFrappuccino();
-    drink.name = 'Sugar Cookie Oat Cream Frappuccino'
-    return drink;
+    getSyrupCount() {
+
+        return this.getFrapCount();
+
+    }
 
 }
 
-function chestnutPralineFrappuccino() {
+class PistachioFrappuccino extends Frappuccino {
 
-    let drink = new Drink();
-    drink.name = 'Chestnut Praline Frappaccino'
-    drink.milk.set('3%');
-    drink.foam.set(0);
-    drink.topping.whip.set(2);
-    drink.topping['Chestnut Praline'].set(2);
-    drink.syrups['Chestnut Praline'].set(2);
-    return drink;
+    constructor() {
+
+        super('Pistachio', false);
+        this.topping['Salted Brown Butter'].set(2);
+
+    }
+    
+}
+
+class PistachioCreamFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Pistachio', true);
+        this.topping['Salted Brown Butter'].set(2);
+
+    }
+    
+}
+
+class SugarCookieOatFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Sugar Cookie', false);
+        this.topping['Red and Green Sprinkles'].set(2);
+        this.milk.set('Oat');
+
+    }
+    
+}
+
+class SugarCookieOatCreamFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Sugar Cookie', true);
+        this.topping['Red and Green Sprinkles'].set(2);
+        this.milk.set('Oat');
+
+    }
+    
+}
+
+class ChestnutPralineFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Chestnut Praline', false);
+        this.topping['Chestnut Praline'].set(2);
+
+    }
+    
+}
+
+class ChestnutPralineCreamFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Chestnut Praline', true);
+        this.topping['Chestnut Praline'].set(2);
+
+    }
+    
+}
+
+class CaramelBruleFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Caramel Brule', false);
+        this.topping['Caramel Brule'].set(2);
+
+    }
+    
+}
+
+class CaramelBruleCreamFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Caramel Brule', true);
+        this.topping['Caramel Brule'].set(2);
+
+    }
+    
+}
+
+class CaramelFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Caramel', false);
+        this.topping.caramel.set(2);
+
+    }
 
 }
 
-function chestnutPralineCreamFrappuccino() {
+class CafeVanillaFrappuccino extends Frappuccino {
 
-    let drink = new chestnutPralineFrappuccino();
-    drink.name = 'Chestnut Praline Cream Frappuccino'
-    return drink;
+    constructor() {
 
-}
+        super(undefined, false);
+        this.name = 'Cafe Vanilla Frappuccino';
+        this.vanillabean.set(this.getFrapCount());
 
-function caramelBruleFrappuccino() {
-
-    let drink = new Drink();
-    drink.name = 'Caramel Brule Frappaccino'
-    drink.milk.set('3%');
-    drink.foam.set(0);
-    drink.topping.whip.set(2);
-    drink.topping['Caramel Brule'].set(2);
-    drink.syrups['Caramel Brule'].set(2);
-    return drink;
+    }
 
 }
 
-function caramelBruleCreamFrappuccino() {
+class VanillaBeanCreamFrappuccino extends Frappuccino {
 
-    let drink = new caramelBruleFrappuccino();
-    drink.name = 'Caramel Brule Cream Frappuccino'
-    return drink;
+    constructor() {
 
-}
+        super(undefined, false);
+        this.name = 'Vanilla Bean Cream Frappuccino';
+        this.vanillabean.set(this.getFrapCount());
 
-function caramelFrappuccino() {
-
-    let drink = new Drink();
-    drink.name = 'Caramel Frappaccino'
-    drink.milk.set('3%');
-    drink.foam.set(0);
-    drink.topping.whip.set(2);
-    drink.topping['caramel'].set(2);
-    drink.syrups['Caramel'].set(2);
-    return drink;
+    }
 
 }
 
-function cafeVanillaFrappuccino() {
+class CoffeeFrappuccino extends Frappuccino {
 
-    let drink = new Drink();
-    drink.name = 'Cafe Vanilla Frappaccino'
-    drink.milk.set('3%');
-    drink.foam.set(0);
-    drink.topping.whip.set(2);
-    drink.vanillabean.set(3);
-    return drink;
+    constructor() {
 
-}
+        super(undefined, false);
+        this.name = 'Coffee Frappuccino';
+        this.topping.whip.set(0);
 
-function vanillaBeanCreamFrappuccino() {
-
-    let drink = new cafeVanillaFrappuccino();
-    drink.name = 'Vanilla Bean Cream Frappuccino'
-    return drink;
+    }
 
 }
 
-function coffeeFrappuccino() {
+class EspressoFrappuccino extends Frappuccino {
 
-    let drink = new Drink();
-    drink.name = 'Coffee Frappaccino'
-    drink.milk.set('3%');
-    drink.foam.set(0);
-    return drink;
+    constructor() {
 
-}
+        super(undefined, false);
+        this.name = 'Espresso Frappuccino';
+        this.shots.set(1);
+        this.topping.whip.set(0);
 
-function espressoFrappuccino() {
-
-    let drink = coffeeFrappuccino();
-    drink.name = 'Espresso Frappuccino';
-    drink.shots.set(1);
-    return drink;
+    }
 
 }
 
-function whiteMochaFrappuccino() {
+class WhiteMochaFrappuccino extends Frappuccino {
 
-    let drink = new Drink();
-    drink.name = 'White Mocha Frappaccino'
-    drink.milk.set('3%');
-    drink.foam.set(0);
-    drink.topping.whip.set(2);
-    drink.syrups['White Mocha'].set(2);
-    return drink;
+    constructor() {
+
+        super('White Mocha', false);
+
+    }
+    
+}
+
+class WhiteChocolateCreamFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('White Mocha', true);
+        this.name = 'White Chocolate Cream Frappuccino';
+
+    }
+    
+}
+
+class MochaFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Mocha', false);
+
+    }
+    
+}
+
+class CaramelRibbonCrunchFrappuccino extends Frappuccino {
+
+    constructor() {
+
+        super('Dark Caramel', false);
+        this.name = 'Caramel Ribbon Crunch Frappuccino';
+        this.topping['Caramel Crunch'].set(2);
+        this.topping.caramel.set(2);
+    }
+    
+}
+
+class CaramelRibbonCrunchCreamFrappuccino extends CaramelRibbonCrunchFrappuccino {
+
+    constructor() {
+
+        super();
+        this.name = 'Caramel Ribbon Crunch Cream Frappuccino';
+
+    }
 
 }
 
-function mochaFrappuccino() {
+class JavaChipFrappuccino extends MochaFrappuccino {
 
-    let drink = new Drink();
-    drink.name = 'Mocha Frappaccino'
-    drink.milk.set('3%');
-    drink.foam.set(0);
-    drink.topping.whip.set(2);
-    drink.syrups['Mocha'].set(2);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Java Chip Frappuccino';
+        this.frapchips.set(this.getFrapCount());
+        this.topping.mocha.set(2);
 
-function caramelRibbonCrunchFrappuccino() {
-
-    let drink = new Drink();
-    drink.name = 'Caramel Ribbon Crunch Frappaccino'
-    drink.milk.set('3%');
-    drink.foam.set(0);
-    drink.topping.whip.set(2);
-    drink.syrups['Dark Caramel'].set(2);
-    drink.topping.caramel.set(2);
-    drink.topping['Caramel Crunch'].set(2);
-    return drink;
+    }
 
 }
 
-function caramelRibbonCrunchCreamFrappuccino() {
+class MochaCookieCrumbleFrappuccino extends JavaChipFrappuccino {
 
-    let drink = new caramelRibbonCrunchFrappuccino();
-    drink.name = 'Caramel Ribbon Crunch Cream Frappuccino'
-    return drink;
+    constructor() {
+        
+        super();
+        this.name = 'Mocha Cookie Crumble Frappuccino';
+        this.topping['Cookie Crumbles'];
 
-}
-
-function javaChipFrappuccino() {
-
-    let drink = mochaFrappuccino();
-    drink.name = 'Java Chip Frappuccino';
-    drink.frapchips.set(3);
-    drink.topping.mocha.set(2);
-    return drink;
+    }
 
 }
 
-function mochaCookieCrumbleFrappuccino() {
+class DoubleChocolatyChipCreamFrappuccino extends JavaChipFrappuccino {
 
-    let drink = javaChipFrappuccino();
-    drink.topping['Cookie Crumbles'].set(2);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Double Chocolaty Chip Cream Frappuccino';
 
-function peppermintMochaFrappuccino() {
-
-    let drink = mochaFrappuccino();
-    drink.name = 'Peppermint Mocha Frappuccino';
-    drink.syrups['Peppermint'].set(2);
-    drink.topping['Chocolate Curls'].set(2);
-    return drink;
+    }
 
 }
 
-function peppermintWhiteMochaFrappuccino() {
+class ChocolateCookieCrumbleFrappuccino extends MochaCookieCrumbleFrappuccino {
 
-    let drink = whiteMochaFrappuccino();
-    drink.name = 'Peppermint White Mocha Frappuccino';
-    drink.syrups['Peppermint'].set(2);
-    drink.topping['Chocolate Curls'].set(2);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Chocolate Cookie Crumble Frappuccino';
 
-function peppermintWhiteChocolateCreamFrappuccino() {
-
-    let drink = peppermintWhiteMochaFrappuccino();
-    drink.name = 'Peppermint White Chocolate Cream Frappuccino';
-    return drink;
+    }
 
 }
 
-function peppermintMochaCreamFrappuccino() {
+class PeppermintMochaFrappuccino extends MochaFrappuccino {
 
-    let drink = peppermintMochaFrappuccino();
-    drink.name = 'Peppermint Mocha Cream Frappuccino';
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Peppermint ' + this.name;
+        this.topping['Chocolate Curls'].set(2);
+        this.syrups['Peppermint'].set(this.getFrapCount());
 
-function whiteChocolateCreamFrappuccino() {
-
-    let drink = whiteMochaFrappuccino();
-    drink.name = 'White Chocolate Cream Frappuccino';
-    return drink;
+    }
 
 }
 
-function chocolateCookieCrumbleFrappuccino() {
+class PeppermintWhiteMochaFrappuccino extends WhiteMochaFrappuccino {
 
-    let drink = mochaCookieCrumbleFrappuccino();
-    drink.name = 'Chocolate Cookie Crumble Frappuccino'
-    return drink.name;
+    constructor() {
 
-}
+        super();
+        this.name = 'Peppermint ' + this.name;
+        this.topping['Chocolate Curls'].set(2);
+        this.syrups['Peppermint'].set(this.getFrapCount());
 
-function doubleChocolatyChipCreamFrappuccino() {
-
-    let drink = javaChipFrappuccino();
-    drink.name = 'Double Chocolaty Cream Frappuccino'
-    return drink;
+    }
 
 }
 
-function matchaCreamFrappuccino() {
+class PeppermintWhiteChocolateCreamFrappuccino extends PeppermintWhiteMochaFrappuccino {
 
-    let drink = coffeeFrappuccino();
-    drink.name = 'Matcha Cream Frappucino';
-    drink.matcha.set(3);
-    drink.syrups['Classic'].set(2);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Peppermint White Choclate Cream Frappuccino';
 
-function chaiCreamFrappuccino() {
-
-    let drink = coffeeFrappuccino();
-    drink.name = 'Chai Cream Frappucino';
-    drink.syrups['Chai'].set(2);
-    return drink;
+    }
 
 }
 
-function strawberryCreamFrappuccino() {
+class PeppermintMochaCreamFrappuccino extends PeppermintMochaFrappuccino {
 
-    let drink = coffeeFrappuccino();
-    drink.name = 'Strawberry Cream Frappucino';
-    drink.strawberrypuree.set(2);
-    drink.syrups['Classic'].set(2);
-    return drink;
+    constructor() {
+
+        super();
+        this.name = 'Peppermint Mocha Cream Frappuccino';
+
+    }
 
 }
 
-drinks.pistachioFrappuccino = pistachioFrappuccino;
-drinks.mochaFrappuccino = mochaFrappuccino;
-drinks.coffeeFrappuccino = coffeeFrappuccino;
-drinks.caramelFrappuccino = caramelFrappuccino;
-drinks.espressoFrappuccino = espressoFrappuccino;
-drinks.javaChipFrappuccino = javaChipFrappuccino;
-drinks.chaiCreamFrappuccino = chaiCreamFrappuccino;
-drinks.whiteMochaFrappuccino = whiteMochaFrappuccino;
-drinks.cafeVanillaFrappuccino = cafeVanillaFrappuccino;
-drinks.matchaCreamFrappuccino = matchaCreamFrappuccino;
-drinks.caramelBruleFrappuccino = caramelBruleFrappuccino;
-drinks.pistachioCreamFrappuccino = pistachioCreamFrappuccino;
-drinks.sugarCookieOatFrappuccino = sugarCookieOatFrappuccino;
-drinks.chestnutPralineFrappuccino = chestnutPralineFrappuccino;
-drinks.peppermintMochaFrappuccino = peppermintMochaFrappuccino;
-drinks.strawberryCreamFrappuccino = strawberryCreamFrappuccino;
-drinks.vanillaBeanCreamFrappuccino = vanillaBeanCreamFrappuccino;
-drinks.caramelBruleCreamFrappuccino = caramelBruleCreamFrappuccino;
-drinks.mochaCookieCrumbleFrappuccino = mochaCookieCrumbleFrappuccino;
-drinks.caramelRibbonCrunchFrappuccino = caramelRibbonCrunchFrappuccino;
-drinks.sugarCookieCreamOatFrappuccino = sugarCookieCreamOatFrappuccino;
-drinks.whiteChocolateCreamFrappuccino = whiteChocolateCreamFrappuccino;
-drinks.chestnutPralineCreamFrappuccino = chestnutPralineCreamFrappuccino;
-drinks.peppermintMochaCreamFrappuccino = peppermintMochaCreamFrappuccino;
-drinks.peppermintWhiteMochaFrappuccino = peppermintWhiteMochaFrappuccino;
-drinks.chocolateCookieCrumbleFrappuccino = pistachioFrappuccino;
-drinks.caramelRibbonCrunchCreamFrappuccino = caramelRibbonCrunchCreamFrappuccino;
-drinks.doubleChocolatyChipCreamFrappuccino = doubleChocolatyChipCreamFrappuccino;
-drinks.peppermintWhiteChocolateCreamFrappuccino = peppermintWhiteChocolateCreamFrappuccino;
+class MatchaCreamFrappuccino extends CoffeeFrappuccino {
+
+    constructor() {
+
+        super();
+        this.name = 'Matcha Cream Frappuccino';
+        this.matcha.set(this.getFrapCount());
+
+    }
+
+}
+
+class ChaiCreamFrappuccino extends CoffeeFrappuccino {
+
+    constructor() {
+
+        super();
+        this.name = 'Chai Cream Frappuccino';
+        this.syrups['Chai'].set(this.getFrapCount());
+
+    }
+
+}
+
+class StrawberryCreamFrappuccino extends CoffeeFrappuccino {
+
+    constructor() {
+
+        super();
+        this.name = 'Strawberry Cream Frappuccino';
+        this.syrups['Classic'].set(this.getFrapCount());
+        this.strawberrypuree.set(2);
+
+    }
+
+}
+
+drinks.PistachioFrappuccino = PistachioFrappuccino;
+drinks.MochaFrappuccino = MochaFrappuccino;
+drinks.CoffeeFrappuccino = CoffeeFrappuccino;
+drinks.CaramelFrappuccino = CaramelFrappuccino;
+drinks.EspressoFrappuccino = EspressoFrappuccino;
+drinks.JavaChipFrappuccino = JavaChipFrappuccino;
+drinks.ChaiCreamFrappuccino = ChaiCreamFrappuccino;
+drinks.WhiteMochaFrappuccino = WhiteMochaFrappuccino;
+drinks.CafeVanillaFrappuccino = CafeVanillaFrappuccino;
+drinks.MatchaCreamFrappuccino = MatchaCreamFrappuccino;
+drinks.CaramelBruleFrappuccino = CaramelBruleFrappuccino;
+drinks.PistachioCreamFrappuccino = PistachioCreamFrappuccino;
+drinks.SugarCookieOatFrappuccino = SugarCookieOatFrappuccino;
+drinks.ChestnutPralineFrappuccino = ChestnutPralineFrappuccino;
+drinks.PeppermintMochaFrappuccino = PeppermintMochaFrappuccino;
+drinks.StrawberryCreamFrappuccino = StrawberryCreamFrappuccino;
+drinks.VanillaBeanCreamFrappuccino = VanillaBeanCreamFrappuccino;
+drinks.CaramelBruleCreamFrappuccino = CaramelBruleCreamFrappuccino;
+drinks.MochaCookieCrumbleFrappuccino = MochaCookieCrumbleFrappuccino;
+drinks.CaramelRibbonCrunchFrappuccino = CaramelRibbonCrunchFrappuccino;
+drinks.SugarCookieOatCreamFrappuccino = SugarCookieOatCreamFrappuccino;
+drinks.WhiteChocolateCreamFrappuccino = WhiteChocolateCreamFrappuccino;
+drinks.ChestnutPralineCreamFrappuccino = ChestnutPralineCreamFrappuccino;
+drinks.PeppermintMochaCreamFrappuccino = PeppermintMochaCreamFrappuccino;
+drinks.PeppermintWhiteMochaFrappuccino = PeppermintWhiteMochaFrappuccino;
+drinks.ChocolateCookieCrumbleFrappuccino = ChocolateCookieCrumbleFrappuccino;
+drinks.CaramelRibbonCrunchCreamFrappuccino = CaramelRibbonCrunchCreamFrappuccino;
+drinks.DoubleChocolatyChipCreamFrappuccino = DoubleChocolatyChipCreamFrappuccino;
+drinks.PeppermintWhiteChocolateCreamFrappuccino = PeppermintWhiteChocolateCreamFrappuccino;

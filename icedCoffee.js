@@ -1,95 +1,328 @@
 
-function coldBrew() {
+class ColdBrew extends Drink {
 
-    let drink = new Drink();
-    drink.name = 'Cold Brew';
-    drink.temp.set(0);
-    drink.water.set(2);
-    drink.foam.set(0);
-    drink.ice.set(2);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.iced();
+        this.counts.syrups = [0, 1, 2, 3, 4];
+        this.name = 'Cold Brew';
 
-function irishCreamColdBrew() {
+    }
 
-    let drink = coldBrew();
-    drink.name = 'Irish Cream Cold Brew';
-    drink.topping.irishCreamColdFoam.set(2);
-    drink.topping['Cocoa Powder'].set(2);
-    drink.syrups['Irish Cream'].set(2);
-    return drink;
+    canBeTrenta() {
+        
+        return true;
+
+    }
 
 }
 
-function saltedCaramelCreamColdBrew() {
+class IrishCreamColdBrew extends ColdBrew {
 
-    let drink = coldBrew();
-    drink.name = 'Salted Caramel Cold Foam Cold Brew';
-    drink.topping.saltedCaramelCreamColdFoam.set(2);
-    drink.syrups['Vanilla'].set(2);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Irish Cream Cold Brew';
+        this.syrups['Irish Cream'].set(this.getSyrupCount());
+        this.topping['Cocoa Powder'].set(2);
+        this.topping.irishcreamcoldfoam.set(2);
 
-function vanillaSweetCreamColdBrew() {
-
-    let drink = coldBrew();
-    drink.name = 'Vanilla Sweet Cream Cold Brew';
-    drink.topping.vanillaSweetCream.set(2);
-    drink.syrups['Vanilla'].set(2);
-    return drink;
+    }  
 
 }
 
-function icedCoffee() {
+class SaltedCaramelCreamColdFoamColdBrew extends ColdBrew {
 
-    let drink = new Drink();
-    drink.name = 'Iced Coffee';
-    drink.temp.set(0);
-    drink.foam.set(0);
-    drink.ice.set(2);
-    drink.syrups['Classic'].set(4);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Salted Caramel Cream Cold Foam Cold Brew';
+        this.syrups['Vanilla'].set(this.getSyrupCount());
+        this.topping.saltedcaramelcoldfoam.set(2);
 
-function icedCoffeeWithMilk() {
-
-    let drink = icedCoffee();
-    drink.name = 'Iced Coffee With Milk';
-    drink.milk.set('2%');
-    return drink;
+    }  
 
 }
 
-function icedShakenEspresso() {
+class VanillaSweetCreamColdBrew extends ColdBrew {
 
-    let drink = icedCoffeeWithMilk();
-    drink.name = 'Iced Shaken Espresso';
-    drink.shots.set(3);
-    return drink;
+    constructor() {
 
-}
+        super();
+        this.name = 'Vanilla Sweet Cream Cold Brew';
+        this.syrups['Vanilla'].set(this.getSyrupCount());
+        this.topping.vanillasweetcream.set(2);
 
-function icedBrownSugarOatShakenEspresso() {
-
-    let drink = icedShakenEspresso();
-    drink.name = 'Iced Brown Sugar Oat Shaken Espresso';
-    drink.espresso.set('Blonde');
-    drink.syrups['Classic'].set(0);
-    drink.syrups['Brown Sugar'].set(4);
-    drink.topping['Cinnamon'].set(2);
-    drink.milk.set('Oat');
-    return drink;
+    }  
 
 }
 
-drinks.coldBrew = coldBrew;
-drinks.irishCreamColdBrew = irishCreamColdBrew;
-drinks.saltedCaramelCreamColdBrew = saltedCaramelCreamColdBrew;
-drinks.vanillaSweetCreamColdBrew = vanillaSweetCreamColdBrew;
-drinks.icedCoffee = icedCoffee;
-drinks.icedCoffeeWithMilk = icedCoffeeWithMilk;
-drinks.icedShakenEspresso = icedShakenEspresso;
-drinks.icedBrownSugarOatShakenEspresso = icedBrownSugarOatShakenEspresso;
+class IcedCoffee extends Drink {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced Coffee';
+        this.syrups['Classic'].set(this.getSyrupCount());
+
+    }
+
+    canBeTrenta() {
+        
+        return true;
+
+    }
+
+}
+
+class IcedCoffeeWithMilk extends IcedCoffee {
+
+    constructor() {
+
+        super();
+        this.name = 'Iced Coffee With Milk';
+        this.milk.set('2%');
+
+    }
+
+}
+
+class IcedShakenEspresso extends IcedCoffeeWithMilk {
+
+    constructor() {
+
+        super();
+        this.name = 'Iced Shaken Espresso';
+        this.counts.shots = [0, 2, 3, 4, 0];
+        this.shots.set(this.getShotCount());
+
+    }
+
+    canBeTrenta() {
+        
+        return false;
+
+    }
+
+}
+
+class IcedBrownSugarOatShakenEspresso extends IcedShakenEspresso {
+
+    constructor() {
+
+        super();
+        this.name = 'Iced Brown Sugar Oat Shaken Espresso';
+        this.espresso.set('Blonde');
+        this.syrups['Classic'].set(0);
+        this.syrups['Brown Sugar'].set(this.getSyrupCount());
+        this.topping['Cinnamon'].set(2);
+        this.milk.set('Oat');
+
+    }
+
+}
+
+class IcedAmericano extends Americano {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced Americano';
+
+    }
+
+}
+
+class IcedEspresso extends Espresso {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+    }
+
+}
+
+class IcedHoneyAlmondFlatWhite extends HoneyAlmondFlatWhite {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedFlatWhite extends FlatWhite {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedPistachioLatte extends PistachioLatte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedChestnutPralineLatte extends ChestnutPralineLatte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedCaramelBruleLatte extends CaramelBruleLatte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedSugarCookieOatLatte extends SugarCookieOatLatte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedLatte extends Latte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedCinnamonDolceLatte extends CinnamonDolceLatte {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedCaramelMacchiato extends CaramelMacchiato {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedMocha extends Mocha {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedWhiteMocha extends WhiteMocha {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedPeppermintMocha extends PeppermintMocha {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+class IcedPeppermintWhiteMocha extends PeppermintWhiteMocha {
+
+    constructor() {
+
+        super();
+        this.iced();
+        this.name = 'Iced ' + this.name;
+
+    }
+
+}
+
+drinks.ColdBrew = ColdBrew;
+drinks.IrishCreamColdBrew = IrishCreamColdBrew;
+drinks.SaltedCaramelCreamColdFoamColdBrew = SaltedCaramelCreamColdFoamColdBrew;
+drinks.VanillaSweetCreamColdBrew = VanillaSweetCreamColdBrew;
+drinks.IcedCoffee = IcedCoffee;
+drinks.IcedCoffeeWithMilk = IcedCoffeeWithMilk;
+drinks.IcedShakenEspresso = IcedShakenEspresso;
+drinks.IcedBrownSugarOatShakenEspresso = IcedBrownSugarOatShakenEspresso;
+drinks.IcedAmericano = IcedAmericano;
+drinks.IcedCaramelBruleLatte = IcedCaramelBruleLatte;
+drinks.IcedCaramelMacchiato = IcedCaramelMacchiato;
+drinks.IcedChestnutPralineLatte = IcedChestnutPralineLatte;
+drinks.IcedCinnamonDolceLatte = IcedCinnamonDolceLatte;
+drinks.IcedFlatWhite = IcedFlatWhite;
+drinks.IcedEspresso = IcedEspresso;
+drinks.IcedHoneyAlmondFlatWhite = IcedHoneyAlmondFlatWhite;
+drinks.IcedLatte = IcedLatte;
+drinks.IcedMocha = IcedMocha;
+drinks.IcedPeppermintMocha = IcedPeppermintMocha;
+drinks.IcedPeppermintWhiteMocha = IcedPeppermintWhiteMocha;
+drinks.IcedPistachioLatte = IcedPistachioLatte;
+drinks.IcedSugarCookieOatLatte = IcedSugarCookieOatLatte;
+drinks.IcedWhiteMocha = IcedWhiteMocha;
