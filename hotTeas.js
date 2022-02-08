@@ -3,7 +3,7 @@ class TeaLatte extends Drink {
 
     constructor() {
 
-        super();
+        super('brewedTea');
         this.water.set(2);
         this.milk.set('2%');
         this.foam.set(2);
@@ -17,6 +17,12 @@ class TeaLatte extends Drink {
 
     }
 
+    canChangeShots() {
+
+        return false;
+
+    }
+
 }
 
 class ChaiTeaLatte extends TeaLatte {
@@ -26,6 +32,13 @@ class ChaiTeaLatte extends TeaLatte {
         super();
         this.name = 'Chai Tea Latte';
         this.syrups['Chai'].set(this.getSyrupCount());
+        this.category = 'otherTea'
+
+    }
+
+    canChangeShots() {
+
+        return true;
 
     }
     
@@ -35,8 +48,14 @@ class Tea extends Drink {
 
     constructor(name) {
 
-        super();
+        super('brewedTea');
         this.name = name + ' Tea';
+
+    }
+
+    canChangeShots() {
+
+        return false;
 
     }
 
@@ -105,6 +124,7 @@ class MatchaTeaLatte extends TeaLatte {
         this.syrups['Liquid Cane Sugar'].set(this.getSyrupCount());
         this.matcha.set(this.getFrapCount());
         this.water.set(0);
+        this.category = 'otherTea';
 
     }
 
@@ -154,7 +174,7 @@ class HoneyCitrusMintTea extends Drink {
 
     constructor() {
 
-        super();
+        super('otherTea');
         this.name = 'Honey Citrus Mint Tea';
         this.counts.syrups = [1, 1, 2, 2, 0];
         this.syrups['Honey Blend'].set(this.getSyrupCount());

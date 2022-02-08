@@ -3,7 +3,7 @@ class Frappuccino extends Drink {
 
     constructor(syrup, cream) {
 
-        super();
+        super('frappuccino');
         this.iced();
         this.milk.set('Whole');
         this.topping.whip.set(2);
@@ -21,6 +21,12 @@ class Frappuccino extends Drink {
             }
 
         }
+
+    }
+
+    canChangeIce() {
+
+        return false;
 
     }
 

@@ -3,7 +3,7 @@ class TraditionalMisto extends Drink {
 
     constructor() {
 
-        super();
+        super('brewedCoffee');
         this.name = 'Traditional Misto';
         this.milk.set('2%');
         this.foam.set(2);
@@ -16,7 +16,7 @@ class BlondeRoast extends Drink {
 
     constructor() {
 
-        super();
+        super('brewedCoffee');
         this.name = 'Blonde Roast';
 
     } 
@@ -27,7 +27,7 @@ class PikeRoast extends Drink {
 
     constructor() {
 
-        super();
+        super('brewedCoffee');
         this.name = 'Pike Roast';
 
     } 
@@ -38,7 +38,7 @@ class DarkRoast extends Drink {
 
     constructor() {
 
-        super();
+        super('brewedCoffee');
         this.name = 'Dark Roast';
 
     } 
@@ -49,7 +49,7 @@ class Americano extends Drink {
 
     constructor() {
 
-        super();
+        super('americano');
         this.name = 'Americano';
         this.water.set(2);
         this.counts.shots = [1, 2, 3, 4, 0];
@@ -68,7 +68,7 @@ class AmericanoMisto extends Americano {
 
     constructor() {
 
-        super();
+        super('americano');
         this.name = 'Americano Misto';
         this.milk.set('2%');
         this.foam.set(2);
@@ -81,7 +81,7 @@ class IrishCreamAmericano extends AmericanoMisto {
 
     constructor() {
 
-        super();
+        super('americano');
         this.name = 'Irish Cream Americano';
         this.topping['Cocoa Powder'].set(2);
         this.syrups['Irish Cream'].set(this.getSyrupCount());
@@ -94,7 +94,7 @@ class BrownSugarOatAmericano extends AmericanoMisto {
 
     constructor() {
 
-        super();
+        super('americano');
         this.name = 'Brown Sugar Oat Americano';
         this.topping['Cinnamon'].set(2);
         this.syrups['Brown Sugar'].set(this.getSyrupCount());
@@ -108,7 +108,7 @@ class Latte extends Drink {
 
     constructor() {
 
-        super();
+        super('latte');
         this.name = 'Latte';
         this.milk.set('2%');
         this.shots.set(this.getShotCount());
@@ -131,7 +131,7 @@ class Espresso extends Drink {
 
     constructor() {
 
-        super();
+        super('espresso');
         this.names = ['', 'Solo', 'Doppio', 'Triple', 'Quad'];
         this.name = 'Doppio Espresso';
         this.shots.set(2);
@@ -159,7 +159,7 @@ class FlatWhite extends Drink {
 
     constructor() {
 
-        super();
+        super('latte');
         this.name = 'Flat White';
         this.milk.set('Whole');
         this.espresso.makeRistretto(true);

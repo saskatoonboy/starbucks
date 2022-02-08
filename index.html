@@ -1,22 +1,71 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <link rel="stylesheet" href="css/fullscreenp5.css">
     <link rel="stylesheet" href="style.css">
-    <!-- <script src="js/p5.dom.min.js"></script> -->
-    <!-- <script src="js/p5.sound.min.js"></script> -->
-    <!-- <script src="js/p5.collide2d.min.js"></script> -->
-    <script src="classifications.js"></script>
     <script src="custom.js"></script>
   </head>
   <body>
 
     <div>
 
-      <button style="display:inline-block; font-size: 30px" type="button" onclick="makeDrink()" id="newDrinkButton">New Drink</button>
-      <button style="display:inline-block; font-size: 30px" type="button" onclick="openSettings()" id="SettingsButton">Settings</button>
+      <button type="button" onclick="openSettings();" id="settingsButton">Settings</button>
+      <button type="button" onclick="while(!makeDrink());" id="newDrinkButton">New Drink</button>
+    </div>
 
+    <div>
+
+      <div id='sizes' class='hidden'>
+        <p class="title">Sizes</p>
+        <input type='checkbox' checked id="short"></input>
+        <p>Short</p>
+        <input type='checkbox' checked id="tall"></input>
+        <p>Tall</p>
+        <input type='checkbox' id="grande"></input>
+        <p>Grande</p>
+        <input type='checkbox' id="venti"></input>
+        <p>Venti</p>
+        <input type='checkbox' id="trenta"></input>
+        <p>Trenta</p>
+
+      </div>
+
+      <div id='coldBar' class='hidden'>
+        <p class="title">Cold Bar</p>
+        <input type='checkbox' checked id="refreshers"></input>
+        <p>Refreshers</p>
+        <input type='checkbox' checked id="icedTea"></input>
+        <p>Iced Tea</p>
+        <input type='checkbox' checked id="frappuccino"></input>
+        <p>Frappuccino</p>
+        <input type='checkbox' checked id="icedCoffee"></input>
+        <p>Iced Coffee</p>
+        <input type='checkbox' checked id="coldBrew"></input>
+        <p>Cold Brew</p>
+        <input type='checkbox' checked id="other"></input>
+        <p>Other</p>
+
+      </div>
+
+      <div id='hotBar' class='hidden'>
+        <p class="title">Hot Bar</p>
+        <input type='checkbox' checked id="latte"></input>
+        <p>Latte</p>
+        <input type='checkbox' id="brewedTea"></input>
+        <p>Brewed Tea</p>
+        <input type='checkbox' id="otherTea"></input>
+        <p>Other Tea</p>
+        <input type='checkbox' id="brewedCoffee"></input>
+        <p>Brewed Coffee</p>
+        <input type='checkbox' checked id="americano"></input>
+        <p>Americanos</p>
+        <input type='checkbox' checked id="steamedMilk"></input>
+        <p>Steamed Milk</p>
+        <input type='checkbox' checked id="appleJuice"></input>
+        <p>Apple Juice</p>
+        <input type='checkbox' checked id="espresso"></input>
+        <p>Espresso</p>
+
+      </div>
     </div>
 
     <p id='output' style="font-size: 30px"></p>

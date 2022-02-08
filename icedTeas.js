@@ -3,7 +3,7 @@ class IcedTea extends Drink {
 
     constructor(tea, lemonade) {
 
-        super();
+        super('icedTea');
         this.iced();
         this.name = 'Iced ' + tea + ' Tea';
         if (lemonade) { 
@@ -12,7 +12,6 @@ class IcedTea extends Drink {
         } else {
             this.water.set(2);
         }
-        console.log(tea);
         if (tea == 'Passion Tango') {
             tea = 'passion';
         } else {

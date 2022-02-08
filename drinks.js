@@ -1,6 +1,6 @@
 class Drink {
 
-    constructor() {
+    constructor(category) {
 
         this.size = new Size();
         this.espresso = new EspressoType();
@@ -26,6 +26,19 @@ class Drink {
         this.name;
         this.counts = { syrups: [2, 3, 4, 5, 0], shots: [1, 1, 2, 2, 0], inclusions: [0, 1, 1, 1, 2], frap: [0, 2, 3, 4, 0] };
         this.defaultFlavour = [];
+        this.category = category;
+
+    }
+
+    canChangeIce() {
+
+        return true;
+
+    }
+
+    canChangeShots() {
+
+        return true;
 
     }
 
@@ -37,13 +50,11 @@ class Drink {
 
     changeSize(val) {
 
-        console.log(val);
         if (this.size.value != val) {
             const prevSyrup = this.getSyrupCount();
             const prevInclusions = this.getInclusionsCount();
             const prevShot = this.getShotCount();
             const prevFrap = this.getFrapCount();
-            console.log(val);
 
             if (this.size.value == this.cup.value) {
 

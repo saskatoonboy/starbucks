@@ -3,7 +3,7 @@ class ColdBrew extends Drink {
 
     constructor() {
 
-        super();
+        super('coldBrew');
         this.iced();
         this.counts.syrups = [0, 1, 2, 3, 4];
         this.name = 'Cold Brew';
@@ -62,7 +62,7 @@ class IcedCoffee extends Drink {
 
     constructor() {
 
-        super();
+        super('icedCoffee');
         this.iced();
         this.name = 'Iced Coffee';
         this.syrups['Classic'].set(this.getSyrupCount());
@@ -97,6 +97,7 @@ class IcedShakenEspresso extends IcedCoffeeWithMilk {
         this.name = 'Iced Shaken Espresso';
         this.counts.shots = [0, 2, 3, 4, 0];
         this.shots.set(this.getShotCount());
+        this.category = 'americano';
 
     }
 
@@ -143,6 +144,13 @@ class IcedEspresso extends Espresso {
         super();
         this.iced();
         this.name = 'Iced ' + this.name;
+        this.category = 'espresso';
+    }
+
+    canChangeIce() {
+
+        return false;
+
     }
 
 }

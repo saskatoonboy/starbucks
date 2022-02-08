@@ -6,6 +6,7 @@ class HotChocolate extends Mocha {
         super();
         this.name = 'Hot Chocolate';
         this.shots.set(0);
+        this.category = 'steamedMilk';
 
     }
 
@@ -17,6 +18,7 @@ class WhiteHotChocolate extends WhiteMocha {
         super();
         this.name = 'White Hot Chocolate';
         this.shots.set(0);
+        this.category = 'steamedMilk';
 
     }
 
@@ -28,6 +30,7 @@ class PeppermintHotChocolate extends PeppermintMocha {
         super();
         this.name = 'Peppermint Hot Chocolate';
         this.shots.set(0);
+        this.category = 'steamedMilk';
 
     }
 
@@ -39,6 +42,7 @@ class PeppermintWhiteHotChocolate extends PeppermintWhiteMocha {
         super();
         this.name = 'Peppermint White Hot Chocolate';
         this.shots.set(0);
+        this.category = 'steamedMilk';
 
     }
 
@@ -48,7 +52,7 @@ class SteamedAppleJuice extends Drink {
 
     constructor() {
 
-        super();
+        super('appleJuice');
         this.name = 'Steamed Apple Juice';
         this.juice.apple.set(2);
 
@@ -77,6 +81,7 @@ class SteamedMilk extends Latte {
         super();
         this.name = 'Steamed Milk';
         this.shots.set(0);
+        this.category = 'steamedMilk';
 
     }
 
@@ -89,6 +94,7 @@ class PistachioCream extends PistachioLatte {
         super();
         this.name = 'Pistachio Cream';
         this.shots.set(0);
+        this.category = 'steamedMilk';
 
     }
 
@@ -101,6 +107,7 @@ class CaramelBruleCream extends CaramelBruleLatte {
         super();
         this.name = 'Caramel Brule Cream';
         this.shots.set(0);
+        this.category = 'steamedMilk';
 
     }
 
@@ -113,6 +120,7 @@ class ChestnutPralineCream extends ChestnutPralineLatte {
         super();
         this.name = 'Chestnut Praline Cream';
         this.shots.set(0);
+        this.category = 'steamedMilk';
 
     }
 

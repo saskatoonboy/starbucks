@@ -1,34 +1,32 @@
-.main-div {
-    display: inline-block;
-    vertical-align: top;
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    display:inline;
 }
 
-canvas  {
+p { 
+    display: inline;
+    font-size: 20px;
+}
 
-    display:inline;
+.title {
+
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
 
 }
 
 button {
-    display: block;
+
+    font-size: 30px;
+    display: inline-block;
+
 }
 
-.text-div {
-    display: block;
-}
+.hidden {
 
-p {
-    display:inline;
-}
+    display: none;
 
-select {
-    display:inline;
-}
-
-input {
-    display:inline;
-}
-
-main {
-    display:inline;
 }

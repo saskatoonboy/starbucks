@@ -7,7 +7,7 @@ class Refresher extends Drink {
 
     constructor(juice, mixin) {
 
-        super();
+        super('refreshers');
         if (mixin == 'coconut') {
             this.name = cName[juice];
             this.milk.set('Coconut');
@@ -26,6 +26,12 @@ class Refresher extends Drink {
     canBeTrenta() {
         
         return true;
+
+    }
+
+    canChangeShots() {
+
+        return false;
 
     }
 
@@ -125,7 +131,7 @@ class ColdMilk extends Drink {
 
     constructor() {
 
-        super();
+        super('other');
         this.name = 'Cold Milk';
         this.milk.set('2%');
         this.iced();
@@ -139,7 +145,7 @@ class Lemonade extends Drink{
 
     constructor() {
 
-        super();
+        super('other');
         this.name = 'Lemonade';
         this.juice.lemonade.set(2);
         this.iced();
@@ -151,6 +157,12 @@ class Lemonade extends Drink{
         return true;
 
     }
+
+    canChangeShots() {
+
+        return false;
+
+    }
     
 }
 
@@ -158,10 +170,22 @@ class BlendedStrawberryLemonade extends Drink {
 
     constructor() {
 
-        super();
+        super('other');
         this.name = 'Blended Strawberry Lemonade';
         this.strawberrypuree.set(2);
         this.iced();
+
+    }
+
+    canChangeIce() {
+
+        return false;
+
+    }
+
+    canChangeShots() {
+
+        return false;
 
     }
 
