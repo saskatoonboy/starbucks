@@ -3,9 +3,11 @@ const outputText = document.getElementById('output');
 const drinkButton = document.getElementById('newDrinkButton');
 const settingsButton = document.getElementById('settingsButton');
 const sizesDiv = document.getElementById('sizes');
+const iceDiv = document.getElementById('ice');
 const coldDiv = document.getElementById('coldBar');
 const hotDiv = document.getElementById('hotBar');
 const sizeCheckboxes = [document.getElementById('short'),document.getElementById('tall'),document.getElementById('grande'),document.getElementById('venti'),document.getElementById('trenta')];
+const iceValues = [document.getElementById('noIce'),document.getElementById('lightIce'),document.getElementById('normalIce'),document.getElementById('extraIce')];
 
 const drinkEnables = {
 
@@ -93,19 +95,29 @@ function makeDrink() {
   // random ice
   if (drink.temp.value == 0 && drink.canChangeIce()) {
 
-    const iceAmountsHigh = [5, 15, 35, 36];
-    const iceAmountsLow = [0, 5, 15, 35];
-
     let iceValue = 0;
-    const rand = Math.floor(Math.random() * 41);
+    let weightTotal = 0;
+    let iceLow = parseInt(iceValues[0].value);
 
-    for (let i = 1; i < iceAmountsHigh.length; i++) {
+    for (let i = 0; i < iceValues.length; i++) {
 
-      if (rand < iceAmountsHigh[i] && rand >= iceAmountsLow[i]) {
+      weightTotal = weightTotal + parseInt(iceValues[i].value);
+
+    }
+
+    const rand = Math.floor(Math.random() * weightTotal);
+    console.log(rand);
+    console.log(weightTotal);
+
+    for (let i = 1; i < iceValues.length; i++) {
+      console.log(i, iceLow, iceLow+parseInt(iceValues[i].value));
+      if (rand < iceLow+parseInt(iceValues[i].value) && rand >= iceLow) {
 
         iceValue = i;
 
       }
+
+      iceLow = iceLow + parseInt(iceValues[i].value);
 
     }
 
@@ -153,6 +165,8 @@ function makeDrink() {
 
   }
 
+
+  // random milk
   if (drink.milk.value > 0) {
 
     if (Math.random() > 0.90) {
@@ -188,6 +202,7 @@ function openSettings() {
     outputText.style.display = '';
     drinkButton.style.display = 'inline-block';
     sizesDiv.style.display = 'none';
+    iceDiv.style.display = 'none';
     coldDiv.style.display = 'none';
     hotDiv.style.display = 'none';
     if (!(sizeCheckboxes[1].checked || sizeCheckboxes[2].checked || sizeCheckboxes[3].checked)) {
@@ -197,6 +212,7 @@ function openSettings() {
     outputText.style.display = 'none';
     drinkButton.style.display = 'none';
     sizesDiv.style.display = 'inline';
+    iceDiv.style.display = 'inline';
     coldDiv.style.display = 'inline';
     hotDiv.style.display = 'inline';
   }
