@@ -91,6 +91,7 @@ function openSettings() {
     if (outputText.style.display == 'none') {
       outputText.style.display = '';
       drinkButton.style.display = 'inline-block';
+      settingsButton.innerHTML = 'Settings';
       sizesDiv.style.display = 'none';
       flavourDiv.style.display = 'none';
       iceDiv.style.display = 'none';
@@ -101,12 +102,12 @@ function openSettings() {
       if (!(sizeCheckboxes[1].checked || sizeCheckboxes[2].checked || sizeCheckboxes[3].checked)) {
         sizeCheckboxes[2].checked = true;
       }
-  
       saveSettings();
   
     } else {
       outputText.style.display = 'none';
       drinkButton.style.display = 'none';
+      settingsButton.innerHTML = 'Save Settings';
       sizesDiv.style.display = 'inline';
       flavourDiv.style.display = 'inline';
       iceDiv.style.display = 'inline';
