@@ -24,11 +24,11 @@
       <p>Short</p>
       <input type='checkbox' checked id="tall"></input>
       <p>Tall</p>
-      <input type='checkbox' id="grande"></input>
+      <input type='checkbox' checked id="grande"></input>
       <p>Grande</p>
-      <input type='checkbox' id="venti"></input>
+      <input type='checkbox' checked id="venti"></input>
       <p>Venti</p>
-      <input type='checkbox' id="trenta"></input>
+      <input type='checkbox' checked id="trenta"></input>
       <p>Trenta</p>
 
     </div>
@@ -105,7 +105,9 @@
     <div id='coldBar' class='hidden'>
       <div>
         <p class="title">Cold Bar</p>
-        <button class='expand hidden' type="button" onlclick="">Expand</button>
+        <button class='expand' type="button" onclick="unselectColdBar();">Unselect All</button>
+        <button class='expand' type="button" onclick="selectColdBar();">Select All</button>
+        <button class='expand hidden' type="button" onclick="">Expand</button>
       </div>
       <input type='checkbox' checked id="refreshers"></input>
       <p>Refreshers</p>
@@ -125,7 +127,9 @@
     <div id='hotBar' class='hidden'>
       <div>
         <p style="display:inline;" class="title">Hot Bar</p>
-        <button class='expand hidden' type="button" onlclick="">Expand</button>
+        <button class='expand' type="button" onclick="unselectHotBar();">Unselect All</button>
+        <button class='expand' type="button" onclick="selectHotBar();">Select All</button>
+        <button class='expand hidden' type="button" onclick="">Expand</button>
       </div>
       <input type='checkbox' checked id="latte"></input>
       <p>Latte</p>
@@ -159,6 +163,7 @@
 <script src='coldDrinks.js'></script>
 <script src='frappuccino.js'></script>
 <script src="saving.js"></script>
+<script src="settings.js"></script>
 <script src="sketch.js"></script>
 
 </html>
