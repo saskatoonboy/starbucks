@@ -2,7 +2,7 @@
 
 function saveSettings() {
 
-    let seed = "00";
+    let seed = "01";
     let val = 0;
     let increments = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192];
     for (let i = 0; i < sizeCheckboxes.length; i++) {
@@ -19,6 +19,26 @@ function saveSettings() {
   
       seed = seed + '0';
   
+    }
+    seed = seed + val;
+    val = parseInt(maxFlavours.value);
+    if (val < 10) {
+      seed = seed + '0';
+    }
+    seed = seed + val;
+    val = Math.floor(parseFloat(minSweetness.value)*2);
+    if (val < 10) {
+      seed = seed + '0';
+    }
+    seed = seed + val;
+    val = Math.floor(parseFloat(maxSweetness.value)*2);
+    if (val < 10) {
+      seed = seed + '0';
+    }
+    seed = seed + val;
+    val = parseInt(newWhipChance.value);
+    if (val < 10) {
+      seed = seed + '0';
     }
     seed = seed + val;
     for (let i = 0; i < iceValues.length; i++) {
@@ -102,12 +122,40 @@ function saveSettings() {
   
       return versionZeroSettings(seed.substring(2));
   
+    } else if (seed.substring(0, 2) == '01') {
+
+      return versionOneSettings(seed.substring(2));
+
     } else {
   
       return false;
   
     }
   
+  }
+
+  function versionOneSettings(seed) {
+
+    if (seed.length != 55) return false;
+
+    if (versionZeroSettings(seed.substring(0, 2) + seed.substring(10))) {
+
+      seed = seed.substring(2, 10);
+      maxFlavours.value = parseInt(seed.substring(0, 2));
+      seed = seed.substring(2);
+      minSweetness.value = parseInt(seed.substring(0, 2))/2;
+      seed = seed.substring(2);
+      maxSweetness.value = parseInt(seed.substring(0, 2))/2;
+      seed = seed.substring(2);
+      newWhipChance.value = parseInt(seed.substring(0, 2));
+      seed = seed.substring(2);
+
+      return true;
+
+    }
+
+    return false;
+
   }
   
   function versionZeroSettings(seed) {

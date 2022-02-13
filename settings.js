@@ -1,5 +1,6 @@
 
 const sizesDiv = document.getElementById('sizes');
+const flavourDiv = document.getElementById('flavour');
 const iceDiv = document.getElementById('ice');
 const whipDiv = document.getElementById('whip');
 const milkDiv = document.getElementById('milk');
@@ -10,6 +11,10 @@ const iceValues = [document.getElementById('noIce'), document.getElementById('li
 const whipValues = [document.getElementById('noWhip'), document.getElementById('lightWhip'), document.getElementById('normalWhip'), document.getElementById('extraWhip')];
 const milkValues = [document.getElementById('nonfatMilk'), document.getElementById('oneMilk'), document.getElementById('twoMilk'), document.getElementById('wholeMilk'), document.getElementById('lactaidMilk'), document.getElementById('coconutMilk'), document.getElementById('almondMilk'), document.getElementById('soyMilk'), document.getElementById('oatMilk'), document.getElementById('heavyCream'), document.getElementById('breve')];
 const newMilkChance = document.getElementById('changeMilk');
+const newWhipChance = document.getElementById('changeWhip');
+const maxFlavours = document.getElementById('maxFlavour');
+const minSweetness = document.getElementById('minSweet');
+const maxSweetness = document.getElementById('maxSweet');
 
 const drinkEnables = {
 
@@ -39,7 +44,7 @@ function unselectColdBar() {
     const selections = ['refreshers','icedTea','frappuccino','icedCoffee','coldBrew','other'];
 
     for (let i = 0; i < selections.length; i++) {
-        
+
         drinkEnables[selections[i]].checked = false;
 
     }
@@ -87,6 +92,7 @@ function openSettings() {
       outputText.style.display = '';
       drinkButton.style.display = 'inline-block';
       sizesDiv.style.display = 'none';
+      flavourDiv.style.display = 'none';
       iceDiv.style.display = 'none';
       whipDiv.style.display = 'none';
       milkDiv.style.display = 'none';
@@ -102,6 +108,7 @@ function openSettings() {
       outputText.style.display = 'none';
       drinkButton.style.display = 'none';
       sizesDiv.style.display = 'inline';
+      flavourDiv.style.display = 'inline';
       iceDiv.style.display = 'inline';
       whipDiv.style.display = 'inline';
       milkDiv.style.display = 'inline';

@@ -33,6 +33,19 @@
 
     </div>
 
+    <div id='flavour' class='hidden'>
+      <div>
+        <p class="title">Flavours</p>
+      </div>
+      <input type='number' id="maxFlavour" value="5" min="0" max="99"></input>
+      <p>Max Extra Flavours</p>
+      <input type='number' id="minSweet" step="0.5" value="0.5" min="0" max="99"></input>
+      <p>Min Sweetness Multiplier</p>
+      <input type='number' id="maxSweet" step="0.5" value="2" min="0" max="99"></input>
+      <p>Max Sweetness Multiplier</p>
+
+    </div>
+
     <div id='ice' class='hidden'>
       <div>
         <p class="title">Ice</p>
@@ -52,6 +65,10 @@
       <div>
         <p class="title">Whip</p>
       </div>
+      <div>
+        <input type='number' id="changeWhip" value="25" min="0" max="99"></input>
+        <p>Chance to change whip (%)</p>
+      </div>
       <input type='number' id="noWhip" value="10" min="0" max="99"></input>
       <p>No Whip</p>
       <input type='number' id="lightWhip" value="10" min="0" max="99"></input>
@@ -68,7 +85,7 @@
         <p class="title">Milk</p>
       </div>
       <div>
-        <input type='number' id="changeMilk" value="70" min="0" max="99"></input>
+        <input type='number' id="changeMilk" value="25" min="0" max="99"></input>
         <p>Chance to change milk (%)</p>
       </div>
       <div>

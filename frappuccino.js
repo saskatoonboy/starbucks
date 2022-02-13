@@ -9,7 +9,7 @@ class Frappuccino extends Drink {
         this.topping.whip.set(2);
         if (syrup != undefined) {
 
-            this.syrups[syrup].set(this.getFrapCount());
+            this.syrups[syrup].set(this.getSyrupCount());
             if (cream) {
 
                 this.name = syrup + ' Cream Frappuccino';
@@ -32,7 +32,7 @@ class Frappuccino extends Drink {
 
     getSyrupCount() {
 
-        return this.getFrapCount();
+        return this.getFrapCount()/2;
 
     }
 

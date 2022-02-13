@@ -3,7 +3,7 @@ const outputText = document.getElementById('output');
 const drinkButton = document.getElementById('newDrinkButton');
 const settingsButton = document.getElementById('settingsButton');
 
-function randRun(func, start, increment) {
+function randRun(func, start, increment, maxRuns) {
 
   if (increment < 0) {
 
@@ -13,11 +13,13 @@ function randRun(func, start, increment) {
 
   let threshold = Math.random();
   let returns = [];
+  let runs = 0;
 
-  while (threshold < start) {
+  while (threshold < start && runs <= maxRuns) {
 
     returns.push(func());
     start = start * increment;
+    runs = runs + 1;
 
   }
 
@@ -94,7 +96,7 @@ function makeDrink() {
   }
 
   // random whip
-  if (drink.canChangeWhip()) {
+  if (drink.canChangeWhip() && Math.random() < parseInt(newWhipChance.value) / 100) {
 
     let whipValue = 0;
     let weightTotal = 0;
@@ -119,8 +121,6 @@ function makeDrink() {
 
     }
 
-    console.log(whipValue);
-
     drink.topping.whip.set(whipValue);
 
   }
@@ -143,26 +143,32 @@ function makeDrink() {
   }
 
   // random flavours
-  let chosenFlavours = randRun(pickFlavour, 0.40, 0.25);
-  for (let i = 0; i < chosenFlavours.length; i++) {
-
-    let chosen = chosenFlavours[i];
-
-    if (chosen in drink.defaultFlavour) {
-      drink.syrups[chosen].set(0);
-    } else {
-      drink.syrups[chosen].set(Math.floor(drink.getSyrupCount() / (chosenFlavours.length + drink.defaultFlavour.length)));
-    }
-
-  }
+  let chosenFlavours = randRun(pickFlavour, 0.40, 0.25, parseInt(maxFlavours.value));
+  let flavourTotal = chosenFlavours.length + drink.defaultFlavour.length;
+  let sweetMultiplier = Math.random() * (parseFloat(maxSweetness.value) - parseFloat(minSweetness.value)) + parseFloat(minSweetness.value);
+  let syrupAmount = Math.round(drink.getSyrupCount() * sweetMultiplier / flavourTotal * 2) / 2;
+  let sweetnessTotal = drink.defaultFlavour.length * syrupAmount;
 
   for (let i = 0; i < drink.defaultFlavour.length; i++) {
 
     let chosen = drink.defaultFlavour[i];
 
+    drink.syrups[chosen].set(syrupAmount);
 
-    drink.syrups[chosen].set(Math.ceil(drink.getSyrupCount() / (chosenFlavours.length + drink.defaultFlavour.length)));
 
+  }
+
+  for (let i = 0; i < chosenFlavours.length; i++) {
+
+    let chosen = chosenFlavours[i];
+
+    if (sweetnessTotal + syrupAmount <= drink.getSyrupCount() * parseFloat(maxSweetness.value)) {
+      if (chosen in drink.defaultFlavour) {
+        drink.syrups[chosen].set(0);
+      } else {
+        drink.syrups[chosen].set(syrupAmount);
+      }
+    }
 
   }
 
@@ -170,7 +176,7 @@ function makeDrink() {
   // random milk
   if (drink.milk.value > 0 && drink.canChangeMilk()) {
 
-    if (Math.random() > parseInt(newMilkChance.value) / 100) {
+    if (Math.random() < parseInt(newMilkChance.value) / 100) {
 
       let milkValue = 0;
       let weightTotal = 0;
@@ -206,7 +212,14 @@ function makeDrink() {
 
 function pickFlavour() {
 
-  return flavours[Math.floor(Math.random() * flavours.length)];
+  let flavour = flavours[Math.floor(Math.random() * flavours.length)];
+  while (flavour in drink.defaultFlavour) {
+
+    flavour = flavours[Math.floor(Math.random() * flavours.length)];
+
+  }
+
+  return flavour;
 
 }
 
