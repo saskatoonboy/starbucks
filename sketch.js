@@ -96,7 +96,7 @@ function makeDrink() {
   }
 
   // random whip
-  if (drink.canChangeWhip() && Math.random() < parseInt(newWhipChance.value) / 100) {
+  if (drink.canChangeWhip() && (Math.random() < parseInt(newWhipChance.value) / 100 || parseInt(whipValues[drink.topping.whip.value].value) == 0)) {
 
     let whipValue = 0;
     let weightTotal = 0;
@@ -176,8 +176,8 @@ function makeDrink() {
   // random milk
   if (drink.milk.value > 0 && drink.canChangeMilk()) {
 
-    if (Math.random() < parseInt(newMilkChance.value) / 100) {
-
+    if ((Math.random() < parseInt(newMilkChance.value) / 100) || parseInt(milkValues[drink.milk.value-1].value) == 0) {
+ 
       let milkValue = 0;
       let weightTotal = 0;
       let milkLow = parseInt(milkValues[0].value);
