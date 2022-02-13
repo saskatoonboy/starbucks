@@ -42,6 +42,18 @@ class Drink {
 
     }
 
+    canChangeWhip() {
+
+        return true;
+
+    }
+
+    canChangeMilk() {
+
+        return true;
+
+    }
+
     canBeTrenta() {
         
         return false;
@@ -133,7 +145,7 @@ class Drink {
                 out = out + '<br>' + vals[i].toString();
             }
         }
-        const vals2 = [this.syrups, this.sweeteners, this.toppping, this.juice, this.tea, this.refresher, this.inclusions];
+        const vals2 = [this.syrups, this.sweeteners, this.topping, this.juice, this.tea, this.refresher, this.inclusions];
         for (let i = 0; i < vals2.length; i++) {
             for (let key in vals2[i]) {
 
@@ -161,7 +173,7 @@ class Drink {
                 vals[i].setDefault();
             }
         }
-        const vals2 = [this.syrups, this.sweeteners, this.toppping, this.juice, this.tea, this.refresher, this.inclusions];
+        const vals2 = [this.syrups, this.sweeteners, this.topping, this.juice, this.tea, this.refresher, this.inclusions];
         for (let i = 0; i < vals2.length; i++) {
             for (let key in vals2[i]) {
 

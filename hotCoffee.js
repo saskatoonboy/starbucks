@@ -141,6 +141,12 @@ class Espresso extends Drink {
 
     }
 
+    canChangeWhip() {
+
+        return false;
+
+    }
+
 }
 
 class EspressoConPanna extends Espresso {
@@ -150,6 +156,12 @@ class EspressoConPanna extends Espresso {
         super();
         this.name = 'Doppio Espresso Con Panna';
         this.topping.whip.set(2);
+
+    }
+
+    canChangeWhip() {
+
+        return false;
 
     }
 

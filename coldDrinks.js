@@ -35,6 +35,18 @@ class Refresher extends Drink {
 
     }
 
+    canChangeMilk() {
+
+        return false;
+
+    }
+
+    canChangeWhip() {
+
+        return false;
+
+    }
+
 }
 
 class KiwiStarfruitRefresher extends Refresher{
@@ -163,6 +175,12 @@ class Lemonade extends Drink{
         return false;
 
     }
+
+    canChangeWhip() {
+
+        return false;
+
+    }
     
 }
 
@@ -184,6 +202,12 @@ class BlendedStrawberryLemonade extends Drink {
     }
 
     canChangeShots() {
+
+        return false;
+
+    }
+
+    canChangeWhip() {
 
         return false;
 

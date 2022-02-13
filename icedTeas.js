@@ -29,6 +29,18 @@ class IcedTea extends Drink {
 
     }
 
+    canChangeShots() {
+
+        return false;
+
+    }
+
+    canChangeWhip() {
+
+        return false;
+
+    }
+
 }
 
 class IcedBlackTea extends IcedTea {

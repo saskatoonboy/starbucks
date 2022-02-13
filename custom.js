@@ -260,7 +260,7 @@ class Milk extends Customization {
     constructor() {
         super();
         this.value = 0;
-        this.str = ['', 'Nonfat Milk', '1% Milk', '2% Milk', 'Whole Milk', 'Lactaid Milk', "Coconut Milk", 'Almond Milk', "Soy MIlk", "Oat Milk", "Heavy Cream", "Breve"];
+        this.str = ['', 'Nonfat Milk', '1% Milk', '2% Milk', 'Whole Milk', 'Lactaid Milk', "Coconut Milk", 'Almond Milk', "Soy Milk", "Oat Milk", "Heavy Cream", "Breve"];
         this.splash = new Splash();
     }
 

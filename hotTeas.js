@@ -23,6 +23,12 @@ class TeaLatte extends Drink {
 
     }
 
+    canChangeWhip() {
+
+        return false;
+
+    }
+
 }
 
 class ChaiTeaLatte extends TeaLatte {
@@ -41,7 +47,7 @@ class ChaiTeaLatte extends TeaLatte {
         return true;
 
     }
-    
+
 }
 
 class Tea extends Drink {
@@ -59,6 +65,12 @@ class Tea extends Drink {
 
     }
 
+    canChangeWhip() {
+
+        return false;
+
+    }
+
 }
 
 class ChaiTea extends Tea {
@@ -68,7 +80,7 @@ class ChaiTea extends Tea {
         super('Chai');
 
     }
-    
+
 }
 
 class EarlGreyTea extends Tea {
@@ -78,7 +90,7 @@ class EarlGreyTea extends Tea {
         super('Earl Grey');
 
     }
-    
+
 }
 
 class RoyalEnglishBreakfastTea extends Tea {
@@ -88,7 +100,7 @@ class RoyalEnglishBreakfastTea extends Tea {
         super('Royal English Breakfast');
 
     }
-    
+
 }
 
 class LondonFogTeaLatte extends TeaLatte {
@@ -137,7 +149,7 @@ class EmperorsCloudAndMistTea extends Tea {
         super('Emperor\'s Cloud and Mist');
 
     }
-    
+
 }
 
 class JadeCitrusMintTea extends Tea {
@@ -147,7 +159,7 @@ class JadeCitrusMintTea extends Tea {
         super('Jade Citrus Mint');
 
     }
-    
+
 }
 
 class PeachTranquilityTea extends Tea {
@@ -157,7 +169,7 @@ class PeachTranquilityTea extends Tea {
         super('Peach Tranquility');
 
     }
-    
+
 }
 
 class MintMajestyTea extends Tea {
@@ -167,7 +179,7 @@ class MintMajestyTea extends Tea {
         super('Mint Majesty');
 
     }
-    
+
 }
 
 class HoneyCitrusMintTea extends Drink {
@@ -183,6 +195,15 @@ class HoneyCitrusMintTea extends Drink {
 
     }
 
+    canChangeShots() {
+        return false;
+    }
+
+    canChangeWhip() {
+
+        return false;
+
+    }
 }
 
 drinks.EarlGreyTea = EarlGreyTea;

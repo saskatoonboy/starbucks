@@ -4,10 +4,15 @@ const drinkButton = document.getElementById('newDrinkButton');
 const settingsButton = document.getElementById('settingsButton');
 const sizesDiv = document.getElementById('sizes');
 const iceDiv = document.getElementById('ice');
+const whipDiv = document.getElementById('whip');
+const milkDiv = document.getElementById('milk');
 const coldDiv = document.getElementById('coldBar');
 const hotDiv = document.getElementById('hotBar');
-const sizeCheckboxes = [document.getElementById('short'),document.getElementById('tall'),document.getElementById('grande'),document.getElementById('venti'),document.getElementById('trenta')];
-const iceValues = [document.getElementById('noIce'),document.getElementById('lightIce'),document.getElementById('normalIce'),document.getElementById('extraIce')];
+const sizeCheckboxes = [document.getElementById('short'), document.getElementById('tall'), document.getElementById('grande'), document.getElementById('venti'), document.getElementById('trenta')];
+const iceValues = [document.getElementById('noIce'), document.getElementById('lightIce'), document.getElementById('normalIce'), document.getElementById('extraIce')];
+const whipValues = [document.getElementById('noWhip'), document.getElementById('lightWhip'), document.getElementById('normalWhip'), document.getElementById('extraWhip')];
+const milkValues = [document.getElementById('nonfatMilk'), document.getElementById('oneMilk'), document.getElementById('twoMilk'), document.getElementById('wholeMilk'), document.getElementById('lactaidMilk'), document.getElementById('coconutMilk'), document.getElementById('almondMilk'), document.getElementById('soyMilk'), document.getElementById('oatMilk'), document.getElementById('heavyCream'), document.getElementById('breve')];
+const newMilkChance = document.getElementById('changeMilk');
 
 const drinkEnables = {
 
@@ -29,7 +34,7 @@ const drinkEnables = {
 }
 
 function expandHot() {
-  
+
 }
 
 function randRun(func, start, increment) {
@@ -106,12 +111,9 @@ function makeDrink() {
     }
 
     const rand = Math.floor(Math.random() * weightTotal);
-    console.log(rand);
-    console.log(weightTotal);
 
     for (let i = 1; i < iceValues.length; i++) {
-      console.log(i, iceLow, iceLow+parseInt(iceValues[i].value));
-      if (rand < iceLow+parseInt(iceValues[i].value) && rand >= iceLow) {
+      if (rand < iceLow + parseInt(iceValues[i].value) && rand >= iceLow) {
 
         iceValue = i;
 
@@ -124,6 +126,39 @@ function makeDrink() {
     drink.ice.set(iceValue);
 
   }
+
+  // random whip
+  if (drink.canChangeWhip()) {
+
+    let whipValue = 0;
+    let weightTotal = 0;
+    let whipLow = parseInt(whipValues[0].value);
+
+    for (let i = 0; i < whipValues.length; i++) {
+
+      weightTotal = weightTotal + parseInt(whipValues[i].value);
+
+    }
+
+    const rand = Math.floor(Math.random() * weightTotal);
+
+    for (let i = 1; i < whipValues.length; i++) {
+      if (rand < whipLow + parseInt(whipValues[i].value) && rand >= whipLow) {
+
+        whipValue = i;
+
+      }
+
+      whipLow = whipLow + parseInt(whipValues[i].value);
+
+    }
+
+    console.log(whipValue);
+
+    drink.topping.whip.set(whipValue);
+
+  }
+
 
   // random shots
   if (drink.canChangeShots()) {
@@ -167,10 +202,34 @@ function makeDrink() {
 
 
   // random milk
-  if (drink.milk.value > 0) {
+  if (drink.milk.value > 0 && drink.canChangeMilk()) {
 
-    if (Math.random() > 0.90) {
-      drink.milk.set(Math.floor(Math.random()*11));
+    if (Math.random() > parseInt(newMilkChance.value) / 100) {
+
+      let milkValue = 0;
+      let weightTotal = 0;
+      let milkLow = parseInt(milkValues[0].value);
+
+      for (let i = 0; i < milkValues.length; i++) {
+
+        weightTotal = weightTotal + parseInt(milkValues[i].value);
+
+      }
+
+      const rand = Math.floor(Math.random() * weightTotal);
+
+      for (let i = 1; i < milkValues.length; i++) {
+        if (rand < milkLow + parseInt(milkValues[i].value) && rand >= milkLow) {
+
+          milkValue = i;
+
+        }
+
+        milkLow = milkLow + parseInt(milkValues[i].value);
+
+      }
+
+      drink.milk.set(milkValue + 1);
     }
 
   }
@@ -195,7 +254,7 @@ function pickShot() {
 
 }
 
-while(!makeDrink());
+while (!makeDrink());
 
 function openSettings() {
   if (outputText.style.display == 'none') {
@@ -203,6 +262,8 @@ function openSettings() {
     drinkButton.style.display = 'inline-block';
     sizesDiv.style.display = 'none';
     iceDiv.style.display = 'none';
+    whipDiv.style.display = 'none';
+    milkDiv.style.display = 'none';
     coldDiv.style.display = 'none';
     hotDiv.style.display = 'none';
     if (!(sizeCheckboxes[1].checked || sizeCheckboxes[2].checked || sizeCheckboxes[3].checked)) {
@@ -213,6 +274,8 @@ function openSettings() {
     drinkButton.style.display = 'none';
     sizesDiv.style.display = 'inline';
     iceDiv.style.display = 'inline';
+    whipDiv.style.display = 'inline';
+    milkDiv.style.display = 'inline';
     coldDiv.style.display = 'inline';
     hotDiv.style.display = 'inline';
   }

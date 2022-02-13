@@ -58,6 +58,12 @@ class SteamedAppleJuice extends Drink {
 
     }
 
+    canChangeWhip() {
+
+        return false;
+
+    }
+
 }
 
 class CaramelAppleSpice extends SteamedAppleJuice {
@@ -72,6 +78,12 @@ class CaramelAppleSpice extends SteamedAppleJuice {
         
     }
 
+    canChangeWhip() {
+
+        return true;
+
+    }
+
 }
 
 class SteamedMilk extends Latte {
@@ -82,6 +94,12 @@ class SteamedMilk extends Latte {
         this.name = 'Steamed Milk';
         this.shots.set(0);
         this.category = 'steamedMilk';
+
+    }
+
+    canChangeShot() {
+
+        return false;
 
     }
 
@@ -98,6 +116,12 @@ class PistachioCream extends PistachioLatte {
 
     }
 
+    canChangeShot() {
+
+        return false;
+
+    }
+
 }
 
 class CaramelBruleCream extends CaramelBruleLatte {
@@ -108,6 +132,12 @@ class CaramelBruleCream extends CaramelBruleLatte {
         this.name = 'Caramel Brule Cream';
         this.shots.set(0);
         this.category = 'steamedMilk';
+
+    }
+
+    canChangeShot() {
+
+        return false;
 
     }
 
@@ -124,6 +154,12 @@ class ChestnutPralineCream extends ChestnutPralineLatte {
 
     }
 
+    canChangeShot() {
+
+        return false;
+
+    }
+
 }
 
 class VanillaCream extends SteamedMilk {
@@ -134,6 +170,12 @@ class VanillaCream extends SteamedMilk {
         this.name = 'Vanilla Cream';
         this.syrups['Vanilla'].set(this.getSyrupCount());
         this.topping.whip.set(2);
+
+    }
+
+    canChangeShot() {
+
+        return false;
 
     }
 
