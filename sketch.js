@@ -255,6 +255,7 @@ function pickShot() {
 }
 
 while (!makeDrink());
+loadSettings();
 
 function openSettings() {
   if (outputText.style.display == 'none') {
@@ -269,6 +270,9 @@ function openSettings() {
     if (!(sizeCheckboxes[1].checked || sizeCheckboxes[2].checked || sizeCheckboxes[3].checked)) {
       sizeCheckboxes[2].checked = true;
     }
+
+    saveSettings();
+
   } else {
     outputText.style.display = 'none';
     drinkButton.style.display = 'none';
