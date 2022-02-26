@@ -51,7 +51,6 @@ function makeDrink() {
 
   }
 
-
   // random size
   if (!(drink instanceof Espresso)) {
     let chosenSize = Math.floor(Math.random() * 5);
@@ -142,6 +141,39 @@ function makeDrink() {
     drink.shots.set(shotAdjustment);
   }
 
+  // random espresso
+  if (drink.shots > 0 || drink.shots.default > 0) {
+
+    if ((Math.random() < parseInt(newEspressoChance.value) / 100) || parseInt(espressoValues[drink.espresso.value].value) == 0) {
+      console.log('Changing Espresso');
+      let espValue = 0;
+      let weightTotal = 0;
+      let espLow = parseInt(espressoValues[0].value);
+
+      for (let i = 0; i < espressoValues.length; i++) {
+
+        weightTotal = weightTotal + parseInt(espressoValues[i].value);
+
+      }
+
+      const rand = Math.floor(Math.random() * weightTotal);
+
+      for (let i = 1; i < espressoValues.length; i++) {
+        if (rand < espLow + parseInt(espressoValues[i].value) && rand >= espLow) {
+
+          espValue = i;
+
+        }
+
+        espLow = espLow + parseInt(espressoValues[i].value);
+
+      }
+      console.log(espValue);
+      drink.espresso.set(espValue);
+    }
+
+  }
+
   // random flavours
   let chosenFlavours = randRun(pickFlavour, 0.40, 0.25, parseInt(maxFlavours.value));
   let flavourTotal = chosenFlavours.length + drink.defaultFlavour.length;
@@ -176,8 +208,8 @@ function makeDrink() {
   // random milk
   if (drink.milk.value > 0 && drink.canChangeMilk()) {
 
-    if ((Math.random() < parseInt(newMilkChance.value) / 100) || parseInt(milkValues[drink.milk.value-1].value) == 0) {
- 
+    if ((Math.random() < parseInt(newMilkChance.value) / 100) || parseInt(milkValues[drink.milk.value - 1].value) == 0) {
+
       let milkValue = 0;
       let weightTotal = 0;
       let milkLow = parseInt(milkValues[0].value);

@@ -4,14 +4,17 @@ const flavourDiv = document.getElementById('flavour');
 const iceDiv = document.getElementById('ice');
 const whipDiv = document.getElementById('whip');
 const milkDiv = document.getElementById('milk');
+const espressoDiv = document.getElementById('espressoDiv');
 const coldDiv = document.getElementById('coldBar');
 const hotDiv = document.getElementById('hotBar');
 const sizeCheckboxes = [document.getElementById('short'), document.getElementById('tall'), document.getElementById('grande'), document.getElementById('venti'), document.getElementById('trenta')];
 const iceValues = [document.getElementById('noIce'), document.getElementById('lightIce'), document.getElementById('normalIce'), document.getElementById('extraIce')];
+const espressoValues = [document.getElementById('decaf'), document.getElementById('normal'), document.getElementById('blonde')];
 const whipValues = [document.getElementById('noWhip'), document.getElementById('lightWhip'), document.getElementById('normalWhip'), document.getElementById('extraWhip')];
 const milkValues = [document.getElementById('nonfatMilk'), document.getElementById('oneMilk'), document.getElementById('twoMilk'), document.getElementById('wholeMilk'), document.getElementById('lactaidMilk'), document.getElementById('coconutMilk'), document.getElementById('almondMilk'), document.getElementById('soyMilk'), document.getElementById('oatMilk'), document.getElementById('heavyCream'), document.getElementById('breve')];
 const newMilkChance = document.getElementById('changeMilk');
 const newWhipChance = document.getElementById('changeWhip');
+const newEspressoChance = document.getElementById('changeEspresso');
 const maxFlavours = document.getElementById('maxFlavour');
 const minSweetness = document.getElementById('minSweet');
 const maxSweetness = document.getElementById('maxSweet');
@@ -99,6 +102,7 @@ function openSettings() {
       milkDiv.style.display = 'none';
       coldDiv.style.display = 'none';
       hotDiv.style.display = 'none';
+      espressoDiv.style.display = 'none';
       if (!(sizeCheckboxes[1].checked || sizeCheckboxes[2].checked || sizeCheckboxes[3].checked)) {
         sizeCheckboxes[2].checked = true;
       }
@@ -115,6 +119,7 @@ function openSettings() {
       milkDiv.style.display = 'inline';
       coldDiv.style.display = 'inline';
       hotDiv.style.display = 'inline';
+      espressoDiv.style.display = 'inline';
     }
   
   }
