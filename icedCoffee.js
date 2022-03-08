@@ -125,6 +125,19 @@ class IcedBrownSugarOatShakenEspresso extends IcedShakenEspresso {
 
 }
 
+class IcedToastedVanillaOatShakenEspresso extends IcedBrownSugarOatShakenEspresso {
+
+    constructor() {
+
+        super();
+        this.name = 'Iced Toasted Vanilla Oat Shaken Espresso';
+        this.syrups['Brown Sugar'].set(0);
+        this.syrups['Toasted Vanilla'].set(this.getSyrupCount());
+
+    }
+
+}
+
 class IcedAmericano extends Americano {
 
     constructor() {

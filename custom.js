@@ -1,5 +1,49 @@
 // parent class
-const flavours = ['Vanilla', 'Sf Vanilla', 'Caramel', 'Peppermint', 'Honey Blend', 'Raspberry', 'Chestnut Praline', 'Toffee Nut', 'Hazelnut', 'Mocha', 'White Mocha', 'Chai', 'Caramel Brule', 'Pistachio', "Dark Caramel", "Classic", "Liquid Cane Sugar", 'Cinnamon Dolce', "Irish Cream", 'Sugar Cookie', "Brown Sugar"];
+const flavours = ['Vanilla', 'Sf Vanilla', 'Caramel', 'Peppermint', 'Honey Blend', 'Raspberry', 
+'Chestnut Praline', 'Toffee Nut', 'Hazelnut', 'Mocha', 'White Mocha', 'Chai', 'Caramel Brule', 
+'Pistachio', "Dark Caramel", "Classic", "Liquid Cane Sugar", 'Cinnamon Dolce', "Irish Cream", 
+'Sugar Cookie', "Brown Sugar", 'Toasted Vanilla'];
+const flavourChance = {
+
+    'Vanilla': 1,
+    'Sf Vanilla': 1,
+    'Caramel': 1,
+    'Peppermint': 1,
+    'Honey Blend': 1,
+    'Raspberry': 1,
+    'Chestnut Praline': 0,
+    'Toffee Nut': 1,
+    'Hazelnut': 1,
+    'Mocha': 1,
+    'White Mocha': 1,
+    'Chai': 1,
+    'Caramel Brule': 0,
+    'Pistachio': 1,
+    'Dark Caramel': 1,
+    'Classic': 1,
+    'Liquid Cane Sugar': 1,
+    'Cinnamon Dolce': 1,
+    'Irish Cream': 0,
+    'Sugar Cookie': 0,
+    'Brown Sugar': 1,
+    'Toasted Vanilla': 1,
+
+
+}
+
+let total = 0;
+for (key in flavourChance) {
+
+    total = total + flavourChance[key];
+
+}
+
+for (key in flavourChance) {
+
+    flavourChance[key] = flavourChance[key] / total;
+
+}
+
 class Customization {
 
     constructor() {

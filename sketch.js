@@ -175,7 +175,7 @@ function makeDrink() {
   }
 
   // random flavours
-  let chosenFlavours = randRun(pickFlavour, 0.40, 0.25, parseInt(maxFlavours.value));
+  let chosenFlavours = randRun(pickFlavour, 0.50, 0.40, parseInt(maxFlavours.value));
   let flavourTotal = chosenFlavours.length + drink.defaultFlavour.length;
   let sweetMultiplier = Math.random() * (parseFloat(maxSweetness.value) - parseFloat(minSweetness.value)) + parseFloat(minSweetness.value);
   let syrupAmount = Math.round(drink.getSyrupCount() * sweetMultiplier / flavourTotal * 2) / 2;
@@ -186,7 +186,6 @@ function makeDrink() {
     let chosen = drink.defaultFlavour[i];
 
     drink.syrups[chosen].set(syrupAmount);
-
 
   }
 
@@ -244,11 +243,16 @@ function makeDrink() {
 
 function pickFlavour() {
 
-  let flavour = flavours[Math.floor(Math.random() * flavours.length)];
-  while (flavour in drink.defaultFlavour) {
+  let rand = Math.random();
+  let total = 0;
+  let flavour;
+  for (key in flavourChance) {
 
-    flavour = flavours[Math.floor(Math.random() * flavours.length)];
-
+    total = total + flavourChance[key];
+    if (total > rand) {
+      flavour = key;
+      break
+    }
   }
 
   return flavour;
