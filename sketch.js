@@ -181,26 +181,29 @@ function makeDrink() {
   let syrupAmount = Math.round(drink.getSyrupCount() * sweetMultiplier / flavourTotal * 2) / 2;
   let sweetnessTotal = drink.defaultFlavour.length * syrupAmount;
 
-  for (let i = 0; i < drink.defaultFlavour.length; i++) {
+  if (chosenFlavours.length > 0) {
 
-    let chosen = drink.defaultFlavour[i];
+    for (let i = 0; i < drink.defaultFlavour.length; i++) {
 
-    drink.syrups[chosen].set(syrupAmount);
-
-  }
-
-  for (let i = 0; i < chosenFlavours.length; i++) {
-
-    let chosen = chosenFlavours[i];
-
-    if (sweetnessTotal + syrupAmount <= drink.getSyrupCount() * parseFloat(maxSweetness.value)) {
-      if (chosen in drink.defaultFlavour) {
-        drink.syrups[chosen].set(0);
-      } else {
-        drink.syrups[chosen].set(syrupAmount);
-      }
+      let chosen = drink.defaultFlavour[i];
+  
+      drink.syrups[chosen].set(syrupAmount);
+  
     }
-
+  
+    for (let i = 0; i < chosenFlavours.length; i++) {
+  
+      let chosen = chosenFlavours[i];
+  
+      if (sweetnessTotal + syrupAmount <= drink.getSyrupCount() * parseFloat(maxSweetness.value)) {
+        if (chosen in drink.defaultFlavour) {
+          drink.syrups[chosen].set(0);
+        } else {
+          drink.syrups[chosen].set(syrupAmount);
+        }
+      }
+  
+    }
   }
 
 
