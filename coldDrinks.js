@@ -1,7 +1,7 @@
 
-const rName = {kiwi: 'Kiwi Starfruit', strawberry: 'Strawberry Acai', mango: 'Mango Dragonfruit'};
+const rName = {kiwi: 'Pineapple Passionfruit', strawberry: 'Strawberry Acai', mango: 'Mango Dragonfruit'};
 const mName = {lemonade: 'Lemonde', water: 'Refresher'};
-const cName = {kiwi: 'Star Drink', strawberry: 'Strawberry Coconut Drink', mango: 'Dragon Drink'};
+const cName = {kiwi: 'Paradise Drink', strawberry: 'Strawberry Coconut Drink', mango: 'Dragon Drink'};
 
 class Refresher extends Drink {
 

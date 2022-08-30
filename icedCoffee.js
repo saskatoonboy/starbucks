@@ -192,18 +192,6 @@ class IcedFlatWhite extends FlatWhite {
 
 }
 
-class IcedPistachioLatte extends PistachioLatte {
-
-    constructor() {
-
-        super();
-        this.iced();
-        this.name = 'Iced ' + this.name;
-
-    }
-
-}
-
 class IcedChestnutPralineLatte extends ChestnutPralineLatte {
 
     constructor() {
@@ -344,6 +332,5 @@ drinks.IcedLatte = IcedLatte;
 drinks.IcedMocha = IcedMocha;
 drinks.IcedPeppermintMocha = IcedPeppermintMocha;
 drinks.IcedPeppermintWhiteMocha = IcedPeppermintWhiteMocha;
-drinks.IcedPistachioLatte = IcedPistachioLatte;
 drinks.IcedSugarCookieOatLatte = IcedSugarCookieOatLatte;
 drinks.IcedWhiteMocha = IcedWhiteMocha;

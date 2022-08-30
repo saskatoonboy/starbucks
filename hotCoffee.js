@@ -196,19 +196,6 @@ class HoneyAlmondFlatWhite extends FlatWhite {
 
 }
 
-class PistachioLatte extends Latte {
-
-    constructor() {
-
-        super();
-        this.name = 'Pistachio Latte';
-        this.syrups['Pistachio'].set(this.getSyrupCount());
-        this.topping['Salted Brown Butter'].set(2);
-
-    }
-
-}
-
 class SugarCookieOatLatte extends Latte {
 
     constructor() {
@@ -356,7 +343,6 @@ drinks.EspressoConPanna = EspressoConPanna;
 drinks.FlatWhite = FlatWhite;
 drinks.HoneyAlmondFlatWhite = HoneyAlmondFlatWhite;
 drinks.Latte = Latte;
-drinks.PistachioLatte = PistachioLatte;
 drinks.CaramelBruleLatte = CaramelBruleLatte;
 drinks.ChestnutPralineLatte = ChestnutPralineLatte;
 drinks.SugarCookieOatLatte = SugarCookieOatLatte;

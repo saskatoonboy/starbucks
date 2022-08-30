@@ -38,28 +38,6 @@ class Frappuccino extends Drink {
 
 }
 
-class PistachioFrappuccino extends Frappuccino {
-
-    constructor() {
-
-        super('Pistachio', false);
-        this.topping['Salted Brown Butter'].set(2);
-
-    }
-    
-}
-
-class PistachioCreamFrappuccino extends Frappuccino {
-
-    constructor() {
-
-        super('Pistachio', true);
-        this.topping['Salted Brown Butter'].set(2);
-
-    }
-    
-}
-
 class SugarCookieOatFrappuccino extends Frappuccino {
 
     constructor() {
@@ -374,7 +352,6 @@ class StrawberryCreamFrappuccino extends CoffeeFrappuccino {
 
 }
 
-drinks.PistachioFrappuccino = PistachioFrappuccino;
 drinks.MochaFrappuccino = MochaFrappuccino;
 drinks.CoffeeFrappuccino = CoffeeFrappuccino;
 drinks.CaramelFrappuccino = CaramelFrappuccino;
@@ -385,7 +362,6 @@ drinks.WhiteMochaFrappuccino = WhiteMochaFrappuccino;
 drinks.CafeVanillaFrappuccino = CafeVanillaFrappuccino;
 drinks.MatchaCreamFrappuccino = MatchaCreamFrappuccino;
 drinks.CaramelBruleFrappuccino = CaramelBruleFrappuccino;
-drinks.PistachioCreamFrappuccino = PistachioCreamFrappuccino;
 drinks.SugarCookieOatFrappuccino = SugarCookieOatFrappuccino;
 drinks.ChestnutPralineFrappuccino = ChestnutPralineFrappuccino;
 drinks.PeppermintMochaFrappuccino = PeppermintMochaFrappuccino;

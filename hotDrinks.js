@@ -105,25 +105,6 @@ class SteamedMilk extends Latte {
 
 }
 
-class PistachioCream extends PistachioLatte {
-
-    constructor() {
-
-        super();
-        this.name = 'Pistachio Cream';
-        this.shots.set(0);
-        this.category = 'steamedMilk';
-
-    }
-
-    canChangeShot() {
-
-        return false;
-
-    }
-
-}
-
 class CaramelBruleCream extends CaramelBruleLatte {
 
     constructor() {
@@ -188,7 +169,6 @@ drinks.PeppermintWhiteHotChocolate = PeppermintWhiteHotChocolate;
 drinks.CaramelAppleSpice = CaramelAppleSpice;
 drinks.SteamedAppleJuice = SteamedAppleJuice;
 drinks.SteamedMilk = SteamedMilk;
-drinks.PistachioCream = PistachioCream;
 drinks.CaramelBruleCream = CaramelBruleCream;
 drinks.ChestnutPralineCream = ChestnutPralineCream;
 drinks.VanillaCream = VanillaCream;

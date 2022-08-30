@@ -21,8 +21,8 @@ class Drink {
         this.tea = { green: new RangeCustomization("Green Tea", 0), passion: new RangeCustomization("Passion Tango Tea", 0), black: new RangeCustomization("Black Tea", 0) };
         this.vanillabean = new Sweetener('Vanilla Bean Powder');
         this.strawberrypuree = new RangeCustomization('Strawberry Puree', 0);
-        this.refresher = { mango: new RangeCustomization("Mango Dragonfruit", 0), strawberry: new RangeCustomization("Strawberry Acai", 0), kiwi: new RangeCustomization("Kiwi Starfruit", 0) };
-        this.inclusions = { mango: new Sweetener("Dragonfruit Inclusions", 0), strawberry: new Sweetener("Strawberry Inclusions", 0), kiwi: new Sweetener("Kiwi Inclusions", 0) };
+        this.refresher = { mango: new RangeCustomization("Mango Dragonfruit", 0), strawberry: new RangeCustomization("Strawberry Acai", 0), kiwi: new RangeCustomization("Pineapple Passionfruit", 0) };
+        this.inclusions = { mango: new Sweetener("Dragonfruit Inclusions", 0), strawberry: new Sweetener("Strawberry Inclusions", 0), kiwi: new Sweetener("Pineapple Inclusions", 0) };
         this.frapchips = new Sweetener('Frap Chips', 0);
         this.name;
         this.counts = { syrups: [2, 3, 4, 5, 0], shots: [1, 1, 2, 2, 0], inclusions: [0, 1, 1, 1, 2], frap: [0, 2, 3, 4, 0] };
@@ -207,7 +207,7 @@ const drinkChance = {
     FlatWhite: 1,
     HoneyAlmondFlatWhite: 1,
     Latte: 1,
-    PistachioLatte: 1,
+
     SugarCookieOatLatte: 0,
     CaramelBruleLatte: 0,
     ChestnutPralineLatte: 0,
@@ -223,7 +223,7 @@ const drinkChance = {
     PeppermintWhiteHotChocolate: 0,
     CaramelAppleSpice: 1,
     SteamedAppleJuice: 1,
-    PistachioCream: 1,
+
     CaramelBruleCream: 0,
     VanillaCream: 1,
     ChestnutPralineCream: 0,
@@ -267,7 +267,7 @@ const drinkChance = {
     ColdMilk: 1,
     Lemonade: 1,
     BlendedStrawberryLemonade: 1,
-    PistachioFrappuccino: 1,
+
     MochaFrappuccino: 1,
     CoffeeFrappuccino: 1,
     CaramelFrappuccino: 1,
@@ -278,7 +278,7 @@ const drinkChance = {
     CafeVanillaFrappuccino: 1,
     MatchaCreamFrappuccino: 1,
     CaramelBruleFrappuccino: 0,
-    PistachioCreamFrappuccino: 1,
+
     SugarCookieOatFrappuccino: 0,
     ChestnutPralineFrappuccino: 0,
     PeppermintMochaFrappuccino: 0,
@@ -292,7 +292,7 @@ const drinkChance = {
     ChestnutPralineCreamFrappuccino: 0,
     PeppermintMochaCreamFrappuccino: 0,
     PeppermintWhiteMochaFrappuccino: 0,
-    PistachioFrappuccino: 1,
+
     CaramelRibbonCrunchCreamFrappuccino: 1,
     DoubleChocolatyChipCreamFrappuccino: 1,
     PeppermintWhiteChocolateCreamFrappuccino: 0,
@@ -301,7 +301,7 @@ const drinkChance = {
     IcedFlatWhite: 1,
     IcedHoneyAlmondFlatWhite: 1,
     IcedLatte: 1,
-    IcedPistachioLatte: 1,
+
     IcedSugarCookieOatLatte: 0,
     IcedCaramelBruleLatte: 0,
     IcedChestnutPralineLatte: 0,

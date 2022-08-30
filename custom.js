@@ -1,7 +1,7 @@
 // parent class
 const flavours = ['Vanilla', 'Sf Vanilla', 'Caramel', 'Peppermint', 'Honey Blend', 'Raspberry', 
 'Chestnut Praline', 'Toffee Nut', 'Hazelnut', 'Mocha', 'White Mocha', 'Chai', 'Caramel Brule', 
-'Pistachio', "Dark Caramel", "Classic", "Liquid Cane Sugar", 'Cinnamon Dolce', "Irish Cream", 
+"Dark Caramel", "Classic", "Liquid Cane Sugar", 'Cinnamon Dolce', "Irish Cream", 
 'Sugar Cookie', "Brown Sugar", 'Toasted Vanilla'];
 const flavourChance = {
 
@@ -18,7 +18,7 @@ const flavourChance = {
     'White Mocha': 1,
     'Chai': 1,
     'Caramel Brule': 0,
-    'Pistachio': 1,
+
     'Dark Caramel': 1,
     'Classic': 1,
     'Liquid Cane Sugar': 1,
